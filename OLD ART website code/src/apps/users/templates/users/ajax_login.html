@@ -1,0 +1,10 @@
+<p class="title title-h1">{{ _('Authorization') }}</p>
+
+{{ form.media }}
+<form method="post" action="{{ ajax_url('users.signin') }}" id="ajax-popup-signin-form"
+      class="users-signin-form users-popup-form users-form" autocomplete="off">
+
+  {% render_form form %}
+
+  <button type="submit" class="btn">{{ _('Sign In') }}</button>
+</form>

@@ -1,0 +1,303 @@
+@import 'mixins';
+
+$menu_text_color: $gray_blue;
+$menu_hover_color: $yellow;
+$menu_active_color: $light_blue;
+
+$mobile_background: $dark_blue;
+$mobile_text_color: $white;
+$mobile_hover_color: $menu_hover_color;
+$mobile_active_color: $menu_active_color;
+
+.main-menu-opened {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+
+  #header-cell > header .logo-box .logo:before {
+    background-position: 0 0;
+  }
+
+  .logo-box {
+    z-index: 51;
+  }
+
+  #header-cell > header .phone-box {
+
+    @include media_interval(0, $media768) {
+      display: block;
+      position: absolute;
+      padding: 0;
+      z-index: 51;
+      background: transparent;
+      border-radius: initial;
+      top: 121px;
+      right: 34px;
+      min-width: initial;
+    }
+
+    .phone-box__btn {
+      display: none;
+    }
+
+    .phone-box__phone {
+      color: $white;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .phone-box__address {
+      letter-spacing: 0.7px;
+    }
+
+    @include media_interval(0, 457px) {
+      display: none;
+    }
+  }
+
+}
+
+// базовый класс всех меню
+.menu {
+  @include zero_fontsize;
+
+  ul {
+    margin: 0 -5px;
+  }
+
+  li {
+    color: $menu_text_color;
+
+    &:hover {
+      a {
+        @include media_interval($media768, 0) {
+          color: $menu_hover_color;
+          transition: color 0.3s;
+        }
+
+      }
+    }
+
+    &.active > a {
+      color: $menu_active_color;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &.link-active > a {
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    a {
+      @include fontsize_h6;
+      @include font-title;
+      display: inline-block;
+      padding: 5px;
+      transition: color 0.3s;
+
+      @include media_interval($media768, $media1024) {
+        @include font-size(16px, 16px);
+      }
+    }
+
+    &.active > a {
+      color: $menu_active_color !important;
+    }
+  }
+}
+
+// главное меню
+.main-menu {
+  display: inline-block;
+
+  @include media_interval(0, $media_mobile) {
+    display: none;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+
+    &:nth-last-of-type(1) {
+      margin-right: 0;
+    }
+  }
+}
+
+#header-cell > header .active-serv {
+  a[href='/'] {
+    color: $light_blue;
+  }
+
+  &:before, &:after {
+    background: $light_blue !important;
+  }
+}
+
+// мобильное меню
+.mobile-menu {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 768px;
+  height: 101vh;
+  z-index: 50;
+  text-align: left;
+  align-items: center;
+  background: $mobile_background;
+  box-sizing: border-box;
+  transition: left 0.2s;
+  padding:92px 0 60px;
+
+  @include media_interval($media_mobile, 0) {
+    display: none;
+  }
+
+  .active-serv {
+    a[href='/'] {
+      color: $light_blue;
+    }
+  }
+
+  .scrollable {
+    padding-right: 20px; // для скрытия скроллбара
+    overflow-x: hidden;
+    max-height: 100%;
+    flex: 0 0 100%;
+    top: 14px;
+    position: relative;
+
+    .scrollable-content {
+      padding: 80px 50px 30px 76px;
+      box-sizing: border-box;
+    }
+  }
+
+  li {
+    margin: 10px 0;
+
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+
+    &:nth-last-of-type(1) {
+      margin-bottom: 0;
+    }
+
+    a {
+      display: inline-block;
+      vertical-align: top;
+      color: $mobile_text_color;
+      @include font-size(20px, 20px);
+
+      &:hover {
+        color: $mobile_hover_color;
+      }
+    }
+
+    &.active a {
+      color: $mobile_active_color;
+    }
+  }
+
+  .root_service {
+    display: none;
+  }
+
+  .menu-services__dropdown {
+    display: none;
+    margin: 0 0 18px;
+    z-index: 10;
+
+    &.is-active-dropdown {
+      @include media_interval(0, $media768) {
+        display: block;
+      }
+    }
+
+    .root_service {
+      margin: -9px 0;
+      display: block;
+
+      a {
+        @include font-size(18px, 32px);
+        @include font-default;
+      }
+    }
+  }
+
+  @at-root .main-menu-opened & {
+    left: 0;
+  }
+}
+
+// Кнопка меню для мобильной версии
+#mobile-menu-button {
+  display: inline-block;
+  position: relative;
+  z-index: 60;
+  cursor: pointer;
+  text-align: left;
+  vertical-align: middle;
+  user-select: none;
+
+  @include media_interval($media_mobile, 0) {
+    display: none;
+  }
+
+  .burger {
+    position: relative;
+    width: $menu_burger_width;
+    height: 3 * $menu_burger_line_height + 2 * $menu_burger_line_space;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: $menu_burger_line_height;
+      background: $menu_burger_color;
+      transition-timing-function: linear;
+    }
+
+    &:before {
+      top: 0;
+      box-shadow: $menu_burger_color 0 ($menu_burger_line_height + $menu_burger_line_space) 0 0;
+      transform: translate3d(0, 0, 0) rotate(0deg);
+      transition-property: transform, box-shadow, top;
+      transition-duration: 0.55s, 0.2s, 0.2s;
+      transition-delay: 0s, 0.45s, 0.45s;
+    }
+
+    &:after {
+      top: 100%;
+      transform: translate3d(0, -100%, 0) rotate(0deg);
+      transition-property: transform, top;
+      transition-duration: 0.55s, 0.2s;
+      transition-delay: 0s, 0.45s;
+    }
+
+    @at-root .main-menu-opened & {
+      &:before {
+        top: 50%;
+        box-shadow: transparent 0 0 0 0;
+        transform: translate3d(0, -50%, 0) rotate(225deg);
+        transition-delay: 0.1s, 0.1s, 0s, 0s;
+        background: $menu_burger_color_index;
+      }
+
+      &:after {
+        top: 50%;
+        transition-delay: 0.1s, 0s;
+        transform: translate3d(0, -50%, 0) rotate(315deg);
+        background: $menu_burger_color_index;
+      }
+    }
+  }
+}

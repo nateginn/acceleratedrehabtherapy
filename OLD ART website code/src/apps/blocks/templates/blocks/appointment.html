@@ -1,0 +1,18 @@
+<div class="appointment">
+  <div class="grid-block appointment__wrapper">
+    <div class="appointment__content">
+      {% if block.header %}
+        <div class="appointment__title">{{ block.header }}</div>
+      {% endif %}
+
+      {% if block.description %}
+        <div class="appointment__text">{{ block.description|linebreaksbr }}</div>
+      {% endif %}
+    </div>
+    <div class="appointment__btn-wrap">
+      <a {% if block.btn_link %}href="{{ block.btn_link }}"
+         {% else %}href="{{ url('contacts:index') }}"{% endif %}
+         class="appointment__button btn yellow-btn"><span>{{ block.btn_text }}</span></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+@import 'mixins';
+
+#mobile-menu-button {
+  .burger {
+    &:before {
+      box-shadow: #FFFFFF 0 10px 0 0;
+    }
+
+    &:before, &:after {
+      background: $menu_burger_color_index;
+    }
+  }
+}
+
+#header-cell > header {
+  .logo-box {
+    .logo {
+      &:before {
+        background-position: 0 -1px;
+
+        @include media_interval(0, $media768) {
+          background-position: 0 0;
+        }
+      }
+    }
+  }
+}
+
+#header-cell > header .menu-services{
+  &:before, &:after{
+      background: $white;
+    }
+}
+
+.menu {
+  li {
+    color: $white;
+  }
+}
+
+.error-404 {
+  color: $white;
+  padding: 233px 0 385px;
+  background: $dark_blue;
+
+  @include media_interval(0, $media1024) {
+    padding: 230px 0 350px;
+  }
+
+  &__title {
+    position: relative;
+    @include font-title;
+    @include fontsize_h1;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+
+  &__description {
+    position: relative;
+    @include font-default;
+    @include font-size(18px, 27px);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 780px;
+    margin-bottom: 17px;
+    z-index: 2;
+  }
+
+
+  &__btn-wrap {
+    position: relative;
+    left: 6px;
+
+    &:before {
+      position: absolute;
+      top: -96px;
+      left: -63px;
+      content: '';
+      background: url("/static/img/arrow_part3.png") no-repeat;
+      width: 257px;
+      height: 134px;
+      z-index: 0;
+      background-size: 98%;
+
+      @include media_interval(1401px, 0) {
+        left: -67px;
+      }
+
+      @include media_interval($media1024, $media1200) {
+        left: -47px;
+      }
+
+      @include media_interval($media768, $media1024) {
+        top: -79px;
+        left: 2px;
+        transform: initial;
+      }
+
+      @include media_interval(0, $media768) {
+        top: -51px;
+        left: -15px;
+        background: url(/static/img/arrow__mobile.png) no-repeat -4px -73px;
+        width: 200px;
+        height: 130px;
+        z-index: 0;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      top: 7px;
+      left: -60px;
+      content: '';
+      background: url("/static/img/arrow_part2.png");
+      background-position: -8px -14px;
+      width: 93px;
+      height: 58px;
+      z-index: 1;
+      transform: rotate(-13deg);
+
+      @include media_interval(1401px, 0) {
+        left: -63px;
+      }
+
+      @include media_interval($media1024, $media1200) {
+        left: -46px;
+      }
+
+      @include media_interval($media768, $media1024) {
+        top: 24px;
+        left: 6px;
+        transform: rotate(-18deg);
+      }
+
+      @include media_interval(0, $media768) {
+        display: none;
+      }
+    }
+  }
+
+  &__button {
+    top: 11px;
+    left: 47px;
+    padding: 18px 40px;
+
+    @include media_interval($media768, $media1024) {
+      top: 6px;
+      left: 104px;
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(24px, 24px);
+      top: 33px;
+      left: 59px;
+      letter-spacing: 1px;
+      padding: 18px 17px;
+    }
+  }
+}

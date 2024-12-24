@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="map-container">
+    <div id="google-map" class="map" style="width: 100%; height: 400px;"></div>
+</div>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.GMap !== 'undefined') {
+            var map = new window.GMap('#google-map', {
+                zoom: 14,
+                center: { lat: {{ lat|default:"40.7128" }}, lng: {{ lng|default:"-74.0060" }} }
+            });
+            
+            {% if marker_lat and marker_lng %}
+            var marker = new window.GMapMarker({
+                map: map,
+                position: { lat: {{ marker_lat }}, lng: {{ marker_lng }} },
+                title: '{{ marker_title|default:"" }}'
+            });
+            {% endif %}
+        } else {
+            console.error('GMap not initialized');
+        }
+    });
+</script>
+{% endblock %}

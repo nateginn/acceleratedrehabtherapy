@@ -1,0 +1,10 @@
+<p class="title title-h1">{{ _('Set password') }}</p>
+
+{{ form.media }}
+<form method="post" action="{{ ajax_url('users.reset_confirm') }}" id="ajax-popup-reset-confirm-form"
+      class="users-reset-confirm-form users-popup-form users-form" autocomplete="off">
+
+  {% render_form form %}
+
+  <button type="submit" class="btn">{{ _('Save') }}</button>
+</form>

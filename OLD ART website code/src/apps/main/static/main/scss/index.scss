@@ -1,0 +1,528 @@
+@import "mixins";
+
+#mobile-menu-button {
+  .burger {
+    &:before {
+      box-shadow: #FFFFFF 0 10px 0 0;
+    }
+
+    &:before, &:after {
+      background: $menu_burger_color_index;
+    }
+  }
+}
+
+#header-cell > header {
+  .logo-box {
+    .logo {
+      &:before {
+        background-position: 0 -1px;
+
+        @include media_interval(0, $media768) {
+          background-position: 0 0;
+        }
+      }
+    }
+  }
+}
+
+#header-cell > header .menu-services {
+  &:before, &:after {
+    background: $white;
+  }
+}
+
+.menu {
+  li {
+    color: $white;
+  }
+}
+
+.main-slider {
+  color: $white;
+  position: relative;
+  background: #012E47;
+  width: 100%;
+  min-height: 800px;
+  padding: 317px 0 133px;
+  box-sizing: border-box;
+  @include media_interval($media768, 0) {
+    height: 800px;
+    padding: 0;
+  }
+
+  &__background-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include media_interval(0, $media768) {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    &:before {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+
+    &.isShow {
+
+      >div {
+        opacity: 1;
+      }
+
+      &:before {
+        opacity: 1;
+      }
+      &:nth-child(2) {
+        &:after {
+          opacity: 0.4;
+        }
+      }
+    }
+
+    > div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s 0.2s;
+    }
+
+    &:nth-child(1) {
+      >div {
+        background: url('/static/img/slider-img/03.jpg') no-repeat;
+        background-size: cover;
+
+        @include media_interval($media768, $media1024) {
+          background-position: -255px 0;
+        }
+
+        @include media_interval(0, $media768) {
+          background-position: -448px 0;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        background: url(/static/img/slider-img/03_1.png) no-repeat;
+        width: 585px;
+        height: 566px;
+        background-size: 244%;
+        background-position: -840px -170px;
+        margin-left: 820px;
+        bottom: 71px;
+        z-index: 4;
+
+        @include media_interval(1401px, 0) {
+          display: none;
+        }
+
+        @include media_interval($media768, $media1024) {
+          margin-left: 566px;
+        }
+
+        @include media_interval(0, $media768) {
+          display: none;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      >div {
+        background: url('/static/img/slider-img/02.jpg') no-repeat;
+        background-size: cover;
+
+        @include media_interval($media768, $media1024) {
+          background-position: -291px 0px;
+        }
+
+        @include media_interval(0, $media768) {
+          background-position: -571px 0px;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        background: url(/static/img/slider-img/02_1.png);
+        width: 971px;
+        height: 495px;
+        background-size: 145%;
+        background-position: -415px -1px;
+        margin-left: 409px;
+        top: 0;
+        z-index: 4;
+
+        @include media_interval(1401px, 0) {
+          display: none;
+        }
+
+        @include media_interval($media768, $media1024) {
+          margin-left: 117px;
+        }
+
+        @include media_interval(0, $media768) {
+          display: none;
+        }
+      }
+
+      &:after {
+        position: absolute;
+        content: '';
+        opacity: 0;
+        border: 92px solid #FF0000;
+        box-sizing: border-box;
+        filter: blur(34px);
+        border-radius: 300px;
+        top: 263px;
+        width: 202px;
+        height: 202px;
+        z-index: 5;
+        margin-left: 752px;
+        transition: opacity 1s;
+
+        @include media_interval($media768, $media1024) {
+          width: 198px;
+          height: 198px;
+          margin-left: 480px;
+        }
+
+        @include media_interval(1401px, 0) {
+          display: none;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      >div {
+        background: url('/static/img/slider-img/01.jpg') no-repeat;
+        background-size: cover;
+
+        @include media_interval($media768, $media1024) {
+          background-position: -210px 0px;
+        }
+
+        @include media_interval(0, $media768) {
+          background-position: -190px 0px;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        background: url(/static/img/slider-img/01_1.png);
+        width: 971px;
+        height: 734px;
+        background-size: 145%;
+        background-position: -433px -69px;
+        margin-left: 424px;
+        bottom: 0;
+        z-index: 4;
+
+        @include media_interval(1401px, 0) {
+          display: none;
+        }
+
+        @include media_interval($media768, $media1024) {
+          margin-left: 217px;
+        }
+
+        @include media_interval(0, $media768) {
+          display: none;
+        }
+
+      }
+    }
+
+    &:nth-child(4) {
+      >div {
+        background: url('/static/img/slider-img/04.jpg') no-repeat;
+        background-size: cover;
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        background: url("/static/img/slider-img/04_1.png");
+        width: 305px;
+        height: 100%;
+        bottom: 0;
+        z-index: 4;
+
+        @include media_interval(1401px, 0) {
+          display: none;
+        }
+
+        @include media_interval(0, $media768) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__progress-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #E6E5E0;
+    z-index: 7;
+
+    @include media_interval(0, $media768) {
+      display: none;
+    }
+
+    >span {
+      position: absolute;
+      content: '';
+      width: 0;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #084ACB;
+      //animation: progBar infinite 10s linear;
+    }
+  }
+
+  &__text-wrap {
+    position: absolute;
+    top: 66.5%;
+    left: 8.2%;
+    width: max-content;
+    box-sizing: border-box;
+
+    @include media_interval($media768, $media1024) {
+      left: 4.5%;
+    }
+
+    @include media_interval(0, $media768) {
+      position: relative;
+      z-index: 2;
+      left: auto;
+      top: auto;
+      width: 100%;
+      padding: 0 16px;
+    }
+  }
+
+  &__btn-wrap {
+    position: relative;
+    @include media_interval(0, $media768) {
+      margin-top: 10px;
+    }
+
+    &:before {
+      position: absolute;
+      top: -95px;
+      left: -73px;
+      content: '';
+      background: url("/static/img/arrow_part3.png") no-repeat;
+      width: 257px;
+      height: 134px;
+      z-index: 1;
+      transform: rotate(-4deg);
+      background-size: 98%;
+
+      @include media_interval($media768, $media1024) {
+        top: -79px;
+        left: 2px;
+        transform: initial;
+      }
+
+      @include media_interval(0, $media768) {
+        top: -72px;
+        left: -15px;
+        background: url(/static/img/arrow__mobile.png) no-repeat -4px -73px;
+        width: 200px;
+        height: 130px;
+        z-index: 1;
+      }
+
+      @include media_interval(0, 375px) {
+        display: none;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      top: 23px;
+      left: -72px;
+      content: '';
+      background: url("/static/img/arrow_part2.png");
+      background-position: -8px -14px;
+      width: 93px;
+      height: 58px;
+      z-index: 2;
+
+      @include media_interval($media768, $media1024) {
+        top: 24px;
+        left: 6px;
+        transform: rotate(-18deg);
+      }
+
+      @include media_interval(0, $media768) {
+        display: none;
+      }
+    }
+  }
+
+  &__button {
+    top: 11px;
+    left: 47px;
+    padding: 18px 40px;
+    z-index: 5;
+
+    @include media_interval($media768, $media1024) {
+      top: 6px;
+      left: 104px;
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(24px, 24px);
+      top: 12px;
+      left: 59px;
+      letter-spacing: 1px;
+      padding: 18px 17px;
+    }
+
+    @include media_interval(0, 375px) {
+      left: 0;
+      margin-top: 10px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    @include font-size(132px, 132px);
+    @include font_title;
+    letter-spacing: 1px;
+    z-index: 3;
+    top: -132px;
+
+    @include media_interval(1401px, 0) {
+      @include font-size(119px, 132px);
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(72px, 65px);
+      position: relative;
+      top: auto;
+      margin-bottom: 10px;
+    }
+
+    @include media_interval(0, 375px) {
+      @include font-size(70px, 65px);
+    }
+  }
+
+  &__ticker {
+    position: absolute;
+    display: inline-block;
+    white-space: nowrap;
+
+    @include media_interval(0, $media768) {
+      position: relative;
+      white-space: normal;
+    }
+  }
+
+  &__description {
+    @include font_default;
+    @include font-size(20px, 30px);
+    position: relative;
+    top: -4px;
+    letter-spacing: 0.15px;
+    left: 6px;
+    z-index: 5;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(18px, 27px);
+      top: -13px;
+      letter-spacing: 0;
+      max-width: 468px;
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(16px, 19px);
+      letter-spacing: -0.3px;
+      left: auto;
+      top: auto;
+    }
+  }
+}
+
+@keyframes progBar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+.main {
+  color: $white;
+  background: $dark_blue;
+  padding: 58px 0 15px;
+
+  @include media_interval($media768, $media1024) {
+    padding: 60px 0 18px;
+  }
+
+  &__text {
+    margin: 0 0;
+    max-width: 880px;
+
+    @include media_interval($media768, $media1024) {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 962px;
+        height: 100px;
+        background: url("/static/img/Chiropractic-2.png") no-repeat;
+        left: 7%;
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+      max-width: 610px;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 2;
+
+      @include media_interval(0, $media1024) {
+        @include font-size(34px, 34px);
+      }
+
+      @include media_interval($media768, $media1024) {
+        margin-bottom: 16px;
+        max-width: 584px;
+      }
+    }
+
+    p {
+      @include font-size(18px, 27px);
+
+      @include media_interval(0, $media1024) {
+        @include font-size(15px, 19px);
+      }
+    }
+  }
+}

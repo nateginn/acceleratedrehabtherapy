@@ -1,0 +1,36 @@
+@import 'mixins';
+
+  .toc {
+    padding: 30px 50px 20px;
+    background: #E9E9E9;
+    max-width: 780px;
+    position: relative;
+    margin-bottom: 30px;
+    color: $gray_blue;
+
+    h2, h3, h4 {
+      @include fontsize_h3;
+      @include font_title;
+      margin: 0;
+
+    }
+
+    ol{
+      margin: 18px 0;
+      padding-left: 23px;
+    }
+
+    li{
+      margin-bottom: 3px;
+    }
+
+    @include media_interval(0, $media480) {
+      ol {
+        padding: 0;
+      }
+    }
+
+    li {
+      font-weight: 500;
+    }
+  }

@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#" class="no-js"
+      lang="{{ LANGUAGE_CODE }}" data-google-apikey="{{ GOOGLE_MAPS_API_KEY }}">
+<head>
+  <meta charset="utf-8">
+  {% seo_counters 'head' %}
+  <title>{% block title %}{{ request.seo.title }}{% endblock %}</title>
+  <meta name="referrer" content="unsafe-url">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {# === SCRIPTS === #}
+  <script>
+      var docElement = document.documentElement;
+      docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
+  </script>
+
+  {# Load Google Maps API first #}
+  {# Script loading is now handled by core.js #}
+
+  {# Then define initialization function #}
+  <script>
+    function init_google_maps() {
+        var mapElement = document.getElementById('google-map');
+        if (!mapElement) {
+            console.warn('Google Maps initialization: No map element found');
+            return;
+        }
+
+        try {
+            var mapOptions = {
+                zoom: 14,
+                center: { lat: 40.7128, lng: -74.0060 }, // Default to New York
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"weight": "2.00"}]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f9f9f9"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#e9e9e9"}]
+                    }
+                ]
+            };
+
+            var map = new google.maps.Map(mapElement, mapOptions);
+            window.google_map = map;
+            
+            // Signal that map is ready
+            if (window.GMap && typeof window.GMap.ready === 'function') {
+                window.GMap.ready(map);
+            }
+            
+            console.log('Google Maps initialized successfully');
+        } catch (error) {
+            console.error('Google Maps initialization failed:', error);
+        }
+    }
+  </script>
+
+  {% block metatags %}
+    {% include 'seo/metatags.html' %}
+  {% endblock metatags %}
+
+  <link rel="icon" href="{{ static('img/favicon.png') }}" type="image/x-icon"/>
+
+  {# === FONTS === #}
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+  {# === STYLES === #}
+  {% include 'pipeline/_loadcss.html' %}
+
+  {% block critical_css %}
+    {% inline_stylesheet 'critical' %}
+  {% endblock critical_css %}
+
+  {% stylesheet 'core' %}
+  {% block static_head %}{% endblock static_head %}
+
+  {% include 'pipeline/_preloadcss.html' %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}" vocab="http://schema.org/">
+{% seo_counters 'body_top' %}
+
+<div id="wrapper">
+  {% block header %}
+    <div id="header-wrapper">
+      <div id="header-cell">
+        {% if not is_main_page %}
+          <!--noindex-->
+        {% endif %}
+
+        {% block header_content %}
+          {% header %}
+        {% endblock header_content %}
+
+        {% if not is_main_page %}
+          <!--/noindex-->
+        {% endif %}
+      </div>
+    </div>
+  {% endblock header %}
+
+  <div id="content-wrapper">
+    <div id="content">
+      {% block content %}{% endblock content %}
+    </div>
+  </div>
+
+  {% block footer %}
+    <div id="footer-wrapper">
+      <div id="footer-cell">
+        {% if not is_main_page %}
+          <!--noindex-->
+        {% endif %}
+
+        {% block footer_content %}
+          {% footer %}
+        {% endblock footer_content %}
+
+        {% if not is_main_page %}
+          <!--/noindex-->
+        {% endif %}
+      </div>
+    </div>
+  {% endblock footer %}
+</div>
+
+
+<script src="{{ url('jsi18n') }}"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7&flags=gated"></script>
+
+{% block static_js %}
+  <script>
+      window.ajax_views = {% ajax_views_json %};
+  </script>
+  {% javascript 'core' %}
+{% endblock static_js %}
+
+<script src="{{ static('polyfills/loader.js') }}" defer async></script>
+
+{% seo_counters 'body_bottom' %}
+</body>
+</html>

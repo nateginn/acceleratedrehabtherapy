@@ -1,0 +1,32 @@
+{% if posts.count() > 0 %}
+  <section class="news" data-stick="News">
+    <div class="grid-block news__wrapper">
+
+      {% if block.header %}
+        <h2 class="news__title">{{ block.header }}</h2>
+      {% endif %}
+
+      <div class="news__post-wrap">
+        {% for post in posts[:3] %}
+          <div class="news__post">
+            <a class="news__post-link" href="{{ post.get_absolute_url() }}">
+              <div class="news__img">
+                {% if post.img %}
+                  <img srcset="{{ post.img.normal.srcset }}, {{ post.img.mobile.srcset }}"
+                       src="{{ post.img.normal.url }}"
+                       width="{{ post.img.normal.target_width }}"
+                       height="{{ post.img.normal.target_height }}" property="url"
+                       sizes="100vw"
+                       alt="{{ post.title }}">
+                {% endif %}
+              </div>
+              <div class="news__post-title">{{ post.title }}</div>
+              <div class="news__post-description">{{ post.note|clean }}</div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+

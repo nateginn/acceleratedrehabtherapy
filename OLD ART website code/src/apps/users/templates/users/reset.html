@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+  <div class="grid-block">
+    <h1 class="title-h1">{{ _('Password reset') }}</h1>
+
+    {{ form.media }}
+    <form method="post" action="" id="reset-password-form"
+          class="users-reset-password-form users-form" autocomplete="off">
+
+      {% render_form form %}
+
+      <button type="submit" class="btn">{{ _('Continue') }}</button>
+    </form>
+  </div>
+{% endblock content %}

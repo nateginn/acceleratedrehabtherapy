@@ -1,0 +1,74 @@
+<footer class="footer">
+  <div class="grid-block footer__wrapper">
+
+    <div class="footer__top-row">
+      {% if phone %}
+        <div class="footer__phone-box">
+          <a href="tel:{{ phone|phone }}" class="footer__phone">{{ phone }}</a>
+        </div>
+      {% endif %}
+
+      <div class="footer__menu">
+        {% menu 'main' %}
+      </div>
+
+      <div class="social-links footer__social-links">
+        {% social_links %}
+      </div>
+    </div>
+
+    <div class="footer__bottom-row">
+      <div class="footer__bottom-left">
+
+        <div class="rating-box">
+          <div class="rating" property="aggregateRating" typeof="AggregateRating">
+            {% with rating = get_rating() %}
+              <meta property="ratingValue" content="{{ rating.value }}">
+              <meta property="reviewCount" content="{{ rating.count }}">
+            {% endwith %}
+            <div class="rating__layout">
+              <p class="rating__label-box">
+                <span class="rating__label">Company rating:</span>
+              </p>
+              <div class="rating__stars-box">
+                <ul class="rating__stars">
+                  <li class="rating__star"></li>
+                  <li class="rating__star"></li>
+                  <li class="rating__star"></li>
+                  <li class="rating__star"></li>
+                  <li class="rating__star"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% if address %}
+          <div class="footer__address">
+            <p>{{ address }}</p>
+          </div>
+        {% endif %}
+
+        {% if license %}
+          <div class="footer__copyright">
+            <p>{{ license }}</p>
+          </div>
+        {% endif %}
+
+      </div>
+
+      <div class="footer__bottom-right">
+        <div class="footer__opening-hours">
+          {% for hour in hours %}
+            <p>{{ hour }}</p>
+          {% endfor %}
+          <p>Thursday - By appointment</p>
+        </div>
+
+        <div class="dl-logo-box footer__dl-logo">
+          {% dl_link %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

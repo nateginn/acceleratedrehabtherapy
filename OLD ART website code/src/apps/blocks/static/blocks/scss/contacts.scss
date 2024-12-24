@@ -1,0 +1,453 @@
+@import "mixins";
+
+.map-block {
+  background: $dark_blue;
+  color: $white;
+  padding: 98px 0 97px;
+
+  @include media_interval($media768, $media1024) {
+    padding: 64px 0;
+  }
+
+  @include media_interval(0, $media768) {
+    padding: 42px 0 20px;
+  }
+
+  &__address-wrap {
+    margin-bottom: 84px;
+
+    @include media_interval($media768, $media1024) {
+      margin-bottom: 40px;
+    }
+
+    @include media_interval(0, $media768) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__title {
+    @include font_title;
+    @include fontsize_h2;
+    margin-bottom: 31px;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(40px, 40px);
+    }
+  }
+
+  &__navigation {
+    display: none;
+
+    @include media_interval(0, $media768) {
+      display: flex;
+      width: max-content;
+      position: relative;
+    }
+  }
+
+  &__pagination.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    @include font-size(14px, 21px);
+    @include font-default;
+    position: relative;
+    width: max-content;
+    left: 55px;
+    bottom: -2px;
+  }
+
+  &__next {
+    background: url(/static/img/sprite.svg) no-repeat -9px -111px;
+    width: 14px;
+    height: 25px;
+    transform: scale(-1.3);
+    position: relative;
+    right: -90px;
+    top: 1px;
+
+
+    &:hover {
+      background: url(/static/img/sprite.svg) no-repeat -41px -112px;
+      cursor: pointer;
+      transform: scale(1.3);
+    }
+  }
+
+  &__prev {
+    left: 15px;
+    position: relative;
+    background: url(/static/img/sprite.svg) no-repeat -9px -111px;
+    width: 14px;
+    height: 25px;
+    transform: scale(1.3);
+
+
+    &:hover {
+      transform: scale(-1.3);
+      background: url(/static/img/sprite.svg) no-repeat -41px -112px;
+      cursor: pointer;
+    }
+  }
+
+  #google-map {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 85px;
+
+    .map {
+      height: 500px;
+
+      .gm-bundled-control {
+        @include media_interval(0, $media480) {
+          bottom: 170px !important;
+        }
+      }
+    }
+
+    .direction-link {
+      display: none;
+
+      @include media_interval(0, $media1024) {
+        @include font-size(22px, 33px);
+        display: block;
+        position: absolute;
+        white-space: nowrap;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        letter-spacing: 1px;
+        padding: 7px 93px;
+      }
+    }
+  }
+
+  #addresses {
+    display: flex;
+    flex-direction: column;
+
+    .swiper-wrapper {
+      @include media_interval(0, $media768) {
+        margin-bottom: 40px;
+      }
+    }
+
+    .address {
+      display: flex;
+      flex-direction: column-reverse;
+      max-width: 250px;
+
+      @include media_interval($media768, $media1024) {
+        max-width: 216px;
+      }
+
+      @include media_interval(550px, $media768) {
+        max-width: 50%;
+      }
+
+      @include media_interval(0, 550px) {
+        max-width: 100%;
+      }
+
+      &__city {
+        @include font-title;
+        @include font-size(30px, 36px);
+        margin-bottom: 8px;
+        transition: color 0.3s;
+
+        @include media_interval(0, $media768) {
+          @include font-size(20px, 20px);
+        }
+      }
+
+      &__btn {
+        @include font_default;
+        @include font-size(16px, 24px);
+        position: relative;
+        letter-spacing: 1px;
+        padding: 3px 0;
+        border-radius: 6.2385px;
+        border: 3px solid #FFFFFF;
+        transition: color 0.3s;
+        max-width: 150px;
+
+        &:hover:not(.active) {
+          color: $yellow;
+          border: 3px solid $yellow;
+          transition: color 0.3s;
+        }
+
+        &:hover:not(.active) ~ .address-box {
+          .address__city {
+            color: $yellow;
+            transition: color 0.3s;
+          }
+        }
+      }
+
+      &__js {
+        //white-space: nowrap;
+        margin-bottom: -4px;
+
+        @include media_interval($media1024, $media1200) {
+          margin-bottom: 0;
+        }
+
+        @include media_interval($media768, $media1024) {
+          font-weight: 200;
+          margin-bottom: 6px;
+        }
+
+        @include media_interval(0, $media768) {
+          margin-bottom: 2px;
+        }
+      }
+
+      &__email {
+        margin-bottom: -4px;
+        transition: color 0.3s;
+        width: max-content;
+
+        @include media_interval($media1024, $media1200) {
+          margin-bottom: 0;
+        }
+
+        @include media_interval($media768, $media1024) {
+          font-weight: 200;
+          margin-bottom: 6px;
+        }
+
+        @include media_interval(0, $media768) {
+          margin-bottom: 2px;
+        }
+
+        &:hover {
+          color: $yellow;
+          transition: color 0.3s;
+        }
+      }
+
+      &__phone {
+        width: max-content;
+        transition: color 0.3s;
+
+        @include media_interval($media768, $media1024) {
+          font-weight: 200;
+        }
+
+        &:hover {
+          color: $yellow;
+          transition: color 0.3s;
+        }
+      }
+
+      .address-box {
+        @include font-size(16px, 30px);
+        margin-bottom: 31px;
+        min-height: 156px;
+
+        @include media_interval($media768, $media1024) {
+          margin-bottom: 21px;
+          min-height: 132px;
+        }
+
+        @include media_interval($media768, $media1200) {
+          @include font-size(14px, 20px);
+        }
+
+        @include media_interval(0, $media768) {
+          @include font-size(14px, 23px);
+          margin-bottom: 19px;
+          min-height: 124px;
+        }
+      }
+
+      &.active {
+        .address {
+          &__city {
+            color: $yellow;
+          }
+
+          &__btn {
+            @include font-title;
+            background: $yellow_gradient_2;
+            border: none;
+            padding: 6px 0;
+
+            &:before {
+              position: absolute;
+              content: '';
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              background: $yellow_gradient_1;
+              border-radius: 6.2385px;
+              z-index: -1;
+              opacity: 1;
+              transition: opacity 0.3s;
+            }
+
+            &:hover {
+              color: white;
+              &:before {
+                transition: opacity 0.3s;
+                opacity: 0;
+              }
+            }
+
+            &:active {
+              background: $yellow_gradient_3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__consultation-box {
+    position: relative;
+    left: 98px;
+    top: 15px;
+
+    @include media_interval($media1024, 1280px) {
+      left: 0;
+    }
+
+    @include media_interval($media768, $media1024) {
+      left: 0;
+      top: -15px;
+    }
+
+    @include media_interval(0, $media768) {
+      left: 0;
+      top: -12px;
+      width: max-content;
+      margin: 0 auto;
+    }
+
+    &:before {
+      position: absolute;
+      bottom: -82px;
+      right: 238px;
+      content: '';
+      background: url("/static/img/doctor.png") no-repeat;
+      width: 560px;
+      height: 506px;
+      z-index: 3;
+
+      @include media_interval($media1024, 1280px) {
+        right: 0;
+      }
+
+      @include media_interval($media768, $media1024) {
+        width: 387px;
+        height: 350px;
+        bottom: -81px;
+        right: 52px;
+        background-size: 100%;
+      }
+
+      @include media_interval(0, $media768) {
+        display: none;
+      }
+    }
+  }
+
+  &__consultation-title {
+    @include font-title;
+    @include font-size(110px, 110px);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    z-index: 1;
+    position: relative;
+
+    @include media_interval($media768, $media1024) {
+      margin-bottom: 20px;
+    }
+
+    @include media_interval(0, $media1024) {
+      @include font-size(72px, 72px);
+    }
+
+    @include media_interval(0, 375px) {
+      @include font-size(65px, 65px);
+    }
+  }
+
+  &__btn-consult {
+    @include font-size(24px, 24px);
+    position: relative;
+    left: 54px;
+    padding: 13px 62px;
+    z-index: 2;
+    letter-spacing: 0.3px;
+
+    @include media_interval($media768, $media1024) {
+      left: 12px;
+      padding: 13px 32px;
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(16px, 24px);
+      letter-spacing: 1px;
+      left: 47px;
+      padding: 8px 22px;
+    }
+  }
+
+  &__btn-arrow {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      top: -50px;
+      left: 8px;
+      content: '';
+      background: url("/static/img/arrow_part3.png") no-repeat;
+      width: 188px;
+      height: 134px;
+      z-index: 0;
+      transform: rotate(-4deg);
+      background-size: 100%;
+
+      @include media_interval($media768, $media1024) {
+        top: -45px;
+        left: -31px;
+        transform: rotate(8deg);
+      }
+
+      @include media_interval(0, $media768) {
+        top: -53px;
+        left: -9px;
+        transform: rotate(7deg);
+      }
+    }
+
+    &:after {
+      position: absolute;
+      top: 25px;
+      left: 8px;
+      content: '';
+      background: url("/static/img/arrow_part2.png");
+      transform: rotate(-18deg);
+      width: 78px;
+      height: 58px;
+      z-index: 3;
+      background-size: 100%;
+
+      @include media_interval($media768, $media1024) {
+        top: 14px;
+        left: -35px;
+      }
+
+      @include media_interval(0, $media768) {
+        top: 6px;
+        left: -13px;
+      }
+    }
+  }
+}
+
+
+
+
+
+

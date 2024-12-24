@@ -1,0 +1,65 @@
+@import "mixins";
+
+
+@mixin voted_style() {
+  opacity: 1;
+}
+
+@mixin unvoted_style() {
+  opacity: 0.2;
+}
+
+
+.rating__layout {
+  display: flex;
+  align-items: center;
+}
+
+.rating__label-box {
+  padding-right: 10px;
+}
+
+.rating__label {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.rating__stars {
+  display: flex;
+  margin: 0 -1px;
+  white-space: nowrap;
+
+  &:hover .rating__star {
+    @include voted_style;
+  }
+}
+
+.rating__star {
+  padding: 0 5px;
+  width: 16px;
+  height: 17px;
+  cursor: pointer;
+  background: $sprite_url no-repeat -2px -143px;
+  @include unvoted_style;
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &:hover ~ .rating__star {
+    @include unvoted_style;
+  }
+}
+
+
+@for $index from 1 through 5 {
+  .rating__stars--vote-#{$index} {
+    .rating__star {
+      @include unvoted_style;
+    }
+
+    .rating__star:nth-last-child(n + #{5 - $index + 1}) {
+      @include voted_style;
+    }
+  }
+}

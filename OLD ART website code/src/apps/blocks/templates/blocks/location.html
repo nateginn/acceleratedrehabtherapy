@@ -1,0 +1,25 @@
+<div class="our-location">
+  <div class="grid-block our-location__wrapper">
+    <div class="our-location__content">
+      <div class="our-location__content-wrap">
+        {% if block.header %}
+          <div class="our-location__title">{{ block.header }}</div>
+        {% endif %}
+
+        {% if block.description %}
+          <div class="our-location__text">{{ block.description|linebreaksbr }}</div>
+        {% endif %}
+
+        {% if block.button_text %}
+          <a href="{{ url('about:location') }}" class="our-location__btn btn yellow-btn">{{ block.button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if block.img %}
+      <div class="our-location__img-wrap">
+        <img class="our-location__img" src="{{ block.img.normal.url }}"
+             alt="{{ block.header }}">
+      </div>
+    {% endif %}
+  </div>
+</div>

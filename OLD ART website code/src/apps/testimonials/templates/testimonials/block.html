@@ -1,0 +1,52 @@
+<div class="testimonials" id="testimonials" data-stick="Testimonials">
+  <div class="grid-block testimonials__wrapper">
+
+    {% if block.header %}
+      <h2 class="testimonials__title">{{ block.header }}</h2>
+    {% endif %}
+
+    <div class="testimonials__slider">
+      <div class="swiper-wrapper">
+        {% for testimonial in testimonials %}
+          <div class="testimonials__slide swiper-slide">
+            <div class="testimonials__slide-wrap">
+
+              <div class="rating contain-star" data-star="{{ testimonial.star }}">
+              </div>
+
+              <div class="testimonials__text-wrapper">
+
+                {% if testimonial.short_text %}
+                  <div class="testimonials__text expander-short">
+                    {{ testimonial.short_text }}
+                  </div>
+                  <div class="testimonials__text expander-full hidden">
+                    {{ testimonial.testimonial|linebreaksbr }}
+                  </div>
+                {% else %}
+                  {{ testimonial.testimonial|linebreaksbr }}
+                {% endif %}
+
+                {% if testimonial.is_long %}
+                  <button class="testimonials__btn btn yellow-btn expander-btn"><span
+                      class="btn-more">{{ _('Read more') }}</span>
+                  </button>
+                {% endif %}
+
+              </div>
+
+              <div class="testimonials__author-name">{{ testimonial.name }}</div>
+              <div class="testimonials__author-prof">{{ testimonial.position }}</div>
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+      <div class="testimonials__navigation">
+        <div class="testimonials__prev"></div>
+        <div class="testimonials__pagination"></div>
+        <div class="testimonials__next"></div>
+      </div>
+    </div>
+  </div>
+</div>

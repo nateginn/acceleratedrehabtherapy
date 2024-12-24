@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block static_head %}
+  {{ super() }}
+  {% stylesheet 'contacts' %}
+{% endblock static_head %}
+
+{% block content %}
+
+  <div class="thank-page">
+    <div class="grid-block">
+      <div class="thank-page__wrapper">
+        <div class="thank-page__title">
+          {{ _('Thank You!' ) }}
+        </div>
+
+        <div class="thank-page__description">
+          <p class="thank-page__paragraph">{{ _('Your application has been submitted! Our specialists will contact you as soon
+            as possible.' ) }}</p>
+          <p class="thank-page__paragraph">{{ _('If you have an urgent question, you can call us' ) }} <a
+              href="tel:{{ phone|phone }}" class="thank-page__phone">{{ phone }}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

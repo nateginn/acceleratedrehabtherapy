@@ -1,0 +1,25 @@
+<div class="our-team">
+  <div class="grid-block our-team__wrapper">
+    <div class="our-team__content">
+      <div class="our-team__content-wrap">
+        {% if block.header %}
+          <div class="our-team__title">{{ block.header }}</div>
+        {% endif %}
+
+        {% if block.description %}
+          <div class="our-team__text">{{ block.description|linebreaksbr }}</div>
+        {% endif %}
+
+        {% if block.button_text %}
+          <a href="{{ url('about:team') }}" class="our-team__btn btn yellow-btn">{{ block.button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+    {% if block.img %}
+      <div class="our-team__img-wrap">
+        <img class="our-team__img" src="{{ block.img.normal.url }}"
+             alt="{{ block.header }}">
+      </div>
+    {% endif %}
+  </div>
+</div>

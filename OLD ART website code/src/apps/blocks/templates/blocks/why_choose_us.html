@@ -1,0 +1,17 @@
+<div class="choose-us">
+  <div class="grid-block choose-us__wrapper">
+    {% if block.header %}
+      <div class="choose-us__title">{{ block.header }}</div>
+    {% endif %}
+
+    <div class="choose-us__list">
+      {% for block in block.advantages.all() %}
+        <div class="choose-us__item">
+          <div class="choose-us__item-icon {{ block.icon }}"></div>
+          <div class="choose-us__item-title">{{ block.title }}</div>
+          <div class="choose-us__item-description">{{ block.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

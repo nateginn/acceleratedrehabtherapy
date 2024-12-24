@@ -1,0 +1,39 @@
+<div class="share-block content-container">
+  <div class="share-block__list">
+    <div class="share-block__social-icons">
+      <div class="share-block__item">
+        <div class="fb-like"
+             data-layout="button_count"
+             data-action="like"
+             data-size="small"
+             data-show-faces="false"
+             data-share="false">
+        </div>
+      </div>
+      <div class="share-block__item">
+        <div class="fb-share-button"
+             data-layout="button"
+             data-size="small"
+             data-mobile-iframe="true">
+          <a href="https://www.facebook.com/sharer/sharer.php?src=sdkpreparse" class="fb-xfbml-parse-ignore"
+             target="_blank" rel="nofollow">
+            {{ _('Share') }}
+          </a>
+        </div>
+      </div>
+      <div class="share-block__item">
+        <a class="twitter-share-button"
+           href="https://twitter.com/intent/tweet">
+          {{ _('Tweet') }}
+        </a>
+      </div>
+      <div class="share-block__item no-counter">
+        <a href="http://www.linkedin.com/shareArticle?url={{ request.seo.canonical|urlencode }}summary={{ page.header|urlencode }}&mini=true&title={{ page.header|urlencode }}"
+           class="share-block__linked-in" target="_blank" rel="nofollow"></a>
+      </div>
+    </div>
+    <div class="share-block__item share-block__thanks share-block__item--last">
+      {{ _('Thanks for reading! Please like and share.') }}
+    </div>
+  </div>
+</div>

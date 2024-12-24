@@ -1,0 +1,21 @@
+{% extends 'base_page/index.html' %}
+
+{% block static_head %}
+  {{ super() }}
+  {% stylesheet 'service' %}
+{% endblock static_head %}
+
+{% block static_js %}
+  {{ super() }}
+  {% javascript 'service' %}
+{% endblock static_js %}
+
+{% block hedaer_uniq %}
+  {% if is_services and config.description_additional %}
+    <div class="text-styles">{{ config.description_additional }}</div>
+  {% endif %}
+{% endblock hedaer_uniq %}
+
+{% block service_uniq %}
+    {% include 'services/sub_menu.html' %}
+{% endblock service_uniq %}

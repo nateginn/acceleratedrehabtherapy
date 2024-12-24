@@ -1,0 +1,30 @@
+{% for post in paginator.current_page %}
+
+  <div class="blog__item">
+    <meta property="dateModified" content="{{ post.updated|date("c") }}"/>
+    <meta property="mainEntityOfPage" typeof="WebPage" content="{{ post.get_absolute_url() }}"/>
+
+    <a href="{{ post.get_absolute_url() }}">
+      {% if post.img %}
+        <div class="blog__item-img-wrap">
+          <img class="blog__item-img" srcset="{{ post.img.normal.srcset }}, {{ post.img.mobile.srcset }}"
+               src="{{ post.img.normal.url }}"
+               width="{{ post.img.normal.target_width }}"
+               height="{{ post.img.normal.target_height }}"
+               property="url"
+               sizes="100vw"
+               alt="{{ post.title }}">
+        </div>
+      {% endif %}
+      <div class="blog__item-title">{{ post.title }}</div>
+
+      <meta property="width" content="{{ post.img.normal.target_width }}"/>
+      <meta property="height" content="{{ post.img.normal.target_height }}"/>
+      {% if post.note %}
+        <div class="blog__item-description">{{ post.note|truncatewords(35)|clean }}</div>
+      {% endif %}
+    </a>
+  </div>
+
+{% endfor %}
+

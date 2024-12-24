@@ -1,0 +1,5 @@
+<link href="{{ url }}?_={{ modified }}" rel="preload" as="style" onload="this.rel='stylesheet'"{% if media %} media="{{ media }}"{% endif %}{% if title %} title="{{ title|default("all") }}"{% endif %}/>
+
+<noscript>
+  <link href="{{ url }}?_={{ modified }}" rel="stylesheet"{% if media %} media="{{ media }}"{% endif %}{% if title %} title="{{ title|default("all") }}"{% endif %}/>
+</noscript>

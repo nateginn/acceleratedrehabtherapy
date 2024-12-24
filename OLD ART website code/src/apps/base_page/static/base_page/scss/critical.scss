@@ -1,0 +1,162 @@
+@import "mixins";
+
+.base-header {
+  margin: 170px 0 38px;
+  color: $gray_blue;
+
+  @include media_interval($media768, $media1024) {
+    margin: 165px 0 70px;
+  }
+
+  @include media_interval(0, $media768) {
+    margin: 140px 0 50px;
+  }
+
+  &__wrapper {
+    position: relative;
+    margin-bottom: 55px;
+
+    @include media_interval(0, $media1024) {
+      margin-bottom: 45px;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      width: 715px;
+      height: 175px;
+      background: url("/static/img/opacity-chiropractic.png") no-repeat;
+      top: -26px;
+      right: 0;
+      z-index: -1;
+
+      @include media_interval(1401px, 0) {
+        right: -13vw;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 626px;
+      height: 175px;
+      background: url("/static/img/opacity-chiropractic-2.png") no-repeat;
+      top: 168px;
+      right: -110px;
+      z-index: -1;
+
+      @include media_interval(1401px, 0) {
+        right: -27vw;
+      }
+    }
+
+    &.no-pseudo{
+      &:after, &:before{
+        @include media_interval(0, $media1024){
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__title {
+    @include font_title;
+    @include fontsize_h1;
+    position: relative;
+    color: $gray_blue;
+    max-width: 980px;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    z-index: 2;
+  }
+
+  &__description {
+    @include font_default;
+    @include fontsize_default;
+    position: relative;
+    color: black;
+    max-width: 780px;
+    margin-bottom: 17px;
+    z-index: 2;
+    margin-left: 102px;
+
+    @include media_interval(0, $media768){
+      margin-left: initial;
+    }
+  }
+
+  &__button-arrow {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      top: -101px;
+      left: -6px;
+      content: '';
+      background: url(/static/img/arrow__mobile.png) no-repeat -4px -101px;
+      width: 253px;
+      height: 163px;
+      background-size: 112%;
+
+      //@include media_interval($media1200, 0){
+      //  top: -101px;
+      //  left: -106px;
+      //}
+
+      @include media_interval($media768, $media1024) {
+        top: -81px;
+        left: 11px;
+        width: 237px;
+        height: 137px;
+        background-position: -4px -83px;
+        background-size: 100%;
+      }
+
+      @include media_interval(0, $media768) {
+        top: -55px;
+        left: -15px;
+        width: 189px;
+        height: 113px;
+        background-position: -3px -66px;
+        background-size: 100%;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__button {
+    padding: 18px 40px;
+    margin-left: 100px;
+
+    @include media_interval(0, $media768) {
+      @include font-size(24px, 24px);
+      padding: 18px 11px;
+      margin-left: 49px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.text-styles.std-bottom-text {
+  margin: 30px auto;
+}
+
+
+.header {
+  color: $white;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &__content {
+    max-width: 640px;
+  }
+}

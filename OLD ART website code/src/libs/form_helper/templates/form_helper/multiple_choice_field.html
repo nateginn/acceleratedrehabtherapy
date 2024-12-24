@@ -1,0 +1,22 @@
+{% extends 'form_helper/field.html' %}
+
+{% block field %}
+  <div class="control">
+    <ul>
+      {% for value, title in field.field.choices %}
+        {% with selected = field.value() and value|string in field.value()|map('string') %}
+          <li class="{% if selected %}checked{% endif %}">
+            <input type="checkbox"
+                   id="{{ field.id_for_label }}-{{ loop.index }}"
+                   name="{{ field.html_name }}"
+                   value="{{ value }}"
+                   {% if selected %}checked{% endif %}>
+            <label for="{{ field.id_for_label }}-{{ loop.index }}">
+              <span>{{ title }}</span>
+            </label>
+          </li>
+        {% endwith %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+services:
+  web:
+    build: .
+    image: growyourbiz4ever/artcom:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.dev_common
+      - DB_HOST=db
+      - DB_NAME=acceleratedrehabtherapycom
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+    depends_on:
+      - db
+      - redis
+    command: >
+      /bin/bash -c "cd /app/src &&
+      python manage.py migrate &&
+      ./run.sh"
+
+  db:
+    image: postgres:11
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backup:/backup
+    environment:
+      - POSTGRES_DB=acceleratedrehabtherapycom
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  redis:
+    image: redis:5.0
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

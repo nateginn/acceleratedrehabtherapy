@@ -1,0 +1,6 @@
+{% extends '404.html' %}
+
+{% block title %}{{ _('Bad Request') }}{% endblock %}
+
+{% block code %}400{% endblock code %}
+{% block text %}{{ _('Your browser sent a request that this server could not understand.') }}{% endblock text %}

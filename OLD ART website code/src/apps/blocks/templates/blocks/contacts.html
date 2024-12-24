@@ -1,0 +1,68 @@
+<div class="map-block">
+  <div class="grid-block map-block__address-wrap">
+    {% if block.header %}
+      <div class="map-block__title">{{ block.header }}</div>
+    {% endif %}
+
+    <div id="addresses" class="map-block__slider">
+      <div class="swiper-wrapper">
+        {% for address in addresses %}
+          <div class="address swiper-slide"
+               itemscope itemtype="http://schema.org/PostalAddress"
+               typeof="PostalAddress"
+               data-lat="{{ address.coords.lat }}"
+               data-lng="{{ address.coords.lng }}">
+            <div class="btn address__btn">{{ _('On Map' ) }}</div>
+            <div class="address-box">
+              <p property="addressLocality" class="address__city">{{ address.city }}</p>
+              <p property="streetAddress" class="address__js">
+                <span class="address__street">{{ address.address }}</span>
+                <span class="address__city-inner">{{ address.city }},</span>
+                <span class="address__region">{{ address.region }}</span>
+                <span class="address__zip">{{ address.zip }}</span>
+              </p>
+              <p class="address__email" property="email"><a href="mailto:{{ address.email }}">{{ address.email }}</a>
+              </p>
+              {% if address.phones %}
+                <p class="address__phone" property="telephone">
+                  <a href="tel:{{ address.phones.0|phone }}">{{ address.phones.0 }}</a>
+                </p>
+              {% endif %}
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+
+      <div class="map-block__navigation">
+        <div class="map-block__prev"></div>
+        <div class="map-block__pagination"></div>
+        <div class="map-block__next"></div>
+      </div>
+    </div>
+  </div>
+  <div id="google-map">
+    <div class="map"></div>
+    <a href="https://maps.google.com/maps?daddr=
+        {{ address.coords.lat }}{% if not address.coords.lat %}40.4224565{% endif %},
+        {{ address.coords.lng }}{% if not address.coords.lat %}-104.728624{% endif %}&z=15"
+       class="btn yellow-btn direction-link js-directionLink" target="_blank">{{ _('Get Direction') }}</a>
+  </div>
+
+  <div class="map-block__consultation-box">
+    <div class="grid-block">
+      {% if block.consultation_title %}
+        <div class="map-block__consultation-title">{{ block.consultation_title }}</div>
+      {% endif %}
+
+      {% if block.consultation_btn_text %}
+        <div class="map-block__btn-arrow">
+          <a href="{{ url('contacts:index') }}"
+             class="map-block__btn-consult yellow-btn btn">{{ block.consultation_btn_text }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+

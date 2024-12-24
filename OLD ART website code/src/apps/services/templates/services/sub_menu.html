@@ -1,0 +1,26 @@
+{% if sub_services %}
+  <div class="services-sub-menu">
+    <div class="services-sub-menu__wrapper grid-block">
+
+      {% if config.sub_menu_title %}
+        <h2 class="services-sub-menu__title">{{ config.sub_menu_title }}</h2>
+      {% endif %}
+
+      <section class="services-sub-menu__items">
+        {% for service in sub_services %}
+          {% if active.pk == service.pk %}
+            <div class="services-sub-menu__item-active services-sub-menu__item">
+              <p>{{ service.title }}</p>
+            </div>
+          {% else %}
+            <div class="services-sub-menu__item">
+              <a href="{{ service.get_absolute_url() }}">
+                {{ service.title }}
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </section>
+    </div>
+  </div>
+{% endif %}

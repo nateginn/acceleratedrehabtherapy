@@ -1,0 +1,19 @@
+<div class="pop-up {% if config.popup_visible %}pop-up--active{% endif %}">
+  {% if config.popup_header %}
+    <h1 class="pop-up__title">{{ config.popup_header }}</h1>
+  {% endif %}
+
+  {% if config.popup_description %}
+    <p class="pop-up__description">{{ config.popup_description|clean }}</p>
+  {% endif %}
+
+  {% if config.popup_button_text %}
+    <a class="pop-up__btn btn yellow-btn"
+       {% if config.popup_button_link %}href="{{ config.popup_button_link }}"
+       {% else %}
+       href="{{ url('contacts:index') }}"
+       {% endif %}
+    >{{ config.popup_button_text|clean }}</a>
+  {% endif %}
+
+</div>

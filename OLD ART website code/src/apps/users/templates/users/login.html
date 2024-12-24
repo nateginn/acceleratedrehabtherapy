@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="grid-block">
+    <h1 class="title-h1">{{ _('Authorization') }}</h1>
+
+    {{ form.media }}
+    <form method="post" action="" id="login-form"
+          class="users-login-form users-form" autocomplete="off">
+      <input type="hidden" name="next" value="{{ request.GET.next }}">
+
+      {% render_form form %}
+
+      <button type="submit" class="btn">{{ _('Sign in') }}</button>
+    </form>
+  </div>
+{% endblock content %}

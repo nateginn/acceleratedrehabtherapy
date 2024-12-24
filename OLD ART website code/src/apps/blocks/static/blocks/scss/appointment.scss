@@ -1,0 +1,111 @@
+@import "mixins";
+
+.appointment {
+  margin: 31px 0 0;
+  padding: 45px 0;
+  background: linear-gradient(258.89deg, #043DAC 37.77%, #0F9AFF 100%);
+
+  @include media_interval(0, $media1024) {
+    padding: 30px 0 45px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
+    @include media_interval(0, $media1024) {
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    color: $white;
+    max-width: 545px;
+
+    @include media_interval($media768, $media1024) {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 100%;
+    }
+
+    @include media_interval(0, $media768) {
+      text-align: center;
+      margin-bottom: 20px;
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    @include fontsize_h2;
+    @include font-title;
+
+    @include media_interval(0, $media1024) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__text {
+    @include font_default;
+    @include font-size(16px, 19px);
+  }
+
+  &__button {
+    @include font-size(24px, 24px);
+    position: relative;
+    min-width: 350px;
+    letter-spacing: 1px;
+    z-index: 1;
+    padding: 18px 20px;
+    white-space: nowrap;
+
+    @include media_interval($media1024, 1280px) {
+      @include font-size(19px, 24px);
+    }
+
+    @include media_interval(0, $media768) {
+      transform: scale(0.8);
+      @include font-size(20px, 24px);
+
+    }
+  }
+
+  &__btn-wrap {
+    position: relative;
+    margin-left: 84px;
+
+    @include media_interval(0, $media1024) {
+      margin-left: initial;
+    }
+
+    @include media_interval(0, $media768) {
+      &:before, &:after {
+        display: none;
+      }
+    }
+
+    &:before {
+      position: absolute;
+      top: -32px;
+      left: -70px;
+      content: '';
+      background: url("/static/img/arrow_part.png") no-repeat;
+      background-position: -13px -102px;
+      width: 289px;
+      height: 84px;
+      z-index: 0;
+    }
+
+    &:after {
+      position: absolute;
+      top: 22px;
+      left: -70px;
+      content: '';
+      background: url("/static/img/arrow_part2.png");
+      background-position: -8px -14px;
+      width: 93px;
+      height: 58px;
+      transform: rotate(-5deg);
+      z-index: 2;
+    }
+  }
+}

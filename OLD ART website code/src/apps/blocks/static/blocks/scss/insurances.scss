@@ -1,0 +1,129 @@
+@import "mixins";
+
+.insurances {
+  padding: 105px 0 54px;
+  color: $white;
+  background-color: $dark_blue;
+  position: relative;
+
+  @include media_interval($media768, $media1024) {
+    padding: 0 0 63px;
+  }
+
+  @include media_interval(0, $media768) {
+    padding: 41px 0 0;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: -317px;
+    z-index: 0;
+    left: 0;
+    height: 400px;
+    width: 100vw;
+    background: linear-gradient(180deg, #012E47 2.52%, #004A74 78.39%, #012E47 100%);
+  }
+
+  &__wrapper {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: '';
+      background: url("/static/img/shield.png");
+      width: 376px;
+      height: 472px;
+      top: -142px;
+      right: 110px;
+
+      @include media_interval($media768, $media1024) {
+        width: 230px;
+        height: 289px;
+        background-size: 100%;
+        top: -85px;
+        right: 41px;
+      }
+
+      @include media_interval(0, $media768) {
+        width: 174px;
+        height: 218px;
+        background-size: 100%;
+        top: -48px;
+        right: 16px;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      background: linear-gradient(180deg, #012E47 39.52%, #004A74 70.39%, #012E47 100%);
+    }
+  }
+
+  &__title {
+    @include font_title;
+    @include font-size(110px, 110px);
+    position: relative;
+    margin-bottom: 27px;
+    z-index: 3;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(66px, 66px);
+      margin-bottom: 22px;
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(38px, 38px);
+      margin-bottom: 20px;
+    }
+  }
+
+  &__description {
+    @include font-default;
+    @include font-size(20px, 30px);
+    position: relative;
+    max-width: 580px;
+    margin-bottom: 30px;
+    z-index: 2;
+    opacity: 0.8;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(15px, 23px);
+      max-width: 334px;
+      margin-bottom: 35px;
+    }
+
+    @include media_interval(0, $media768) {
+      display: none;
+    }
+  }
+
+  &__img-wrap {
+    position: absolute;
+    top: -64px;
+    right: 113px;
+
+    @include media_interval($media768, $media1024) {
+      width: 395px;
+      height: 333px;
+      top: -41px;
+      right: 6px;
+    }
+
+    @include media_interval(0, $media768) {
+      display: none;
+    }
+  }
+
+  &__btn {
+    width: 350px;
+
+    @include media_interval(0, $media768) {
+      @include font-size(16px, 16px);
+      padding: 12px 0;
+      width: 200px;
+      letter-spacing: 1px;
+    }
+  }
+}

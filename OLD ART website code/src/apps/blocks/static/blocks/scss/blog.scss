@@ -1,0 +1,120 @@
+@import "mixins";
+
+.news {
+  background: $gray_blue_2;
+  padding: 86px 0 65px;
+  color: $white;
+
+  @include media_interval(0, $media1024) {
+    padding: 40px 0;
+  }
+
+  &__title {
+    @include font_title;
+    @include fontsize_h2;
+    margin-bottom: 37px;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(40px, 40px);
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(28px, 31px);
+    }
+
+    @include media_interval(0, $media1024) {
+      margin-bottom: 27px;
+    }
+  }
+
+  &__post-wrap {
+    display: flex;
+    margin: 0 -10px;
+
+    @include media_interval(0, $media480) {
+      margin: 0;
+    }
+  }
+
+  &__post-link:hover {
+
+    .news__post-title {
+      color: $yellow;
+      transition: color 0.3s;
+    }
+
+    .news__img {
+      img {
+        transform: scale(1.5);
+        transition: transform 2s;
+      }
+    }
+  }
+
+  &__post {
+    width: 33.33%;
+    margin: 0 10px;
+
+    @include media_interval($media480, $media768) {
+      width: 50%;
+
+      &:not(:nth-child(1)):last-child {
+        display: none;
+      }
+    }
+
+    @include media_interval(0, $media480) {
+      display: none;
+
+      &:first-child {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+
+  &__img {
+    margin-bottom: 5px;
+    overflow: hidden;
+
+    @include media_interval(0, $media1024) {
+      margin-bottom: 10px;
+    }
+
+    img {
+      transition: transform 0.5s;
+    }
+  }
+
+  &__post-title {
+    @include font-size(25px, 36px);
+    @include font-title;
+    margin-bottom: 6px;
+    transition: color 0.3s;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(16px, 18px);
+      margin-bottom: 5px;
+    }
+
+    @include media_interval(0, $media768) {
+      @include font-size(20px, 22px);
+      margin-bottom: 0;
+    }
+  }
+
+  &__post-description {
+    @include font_default;
+    @include fontsize_default;
+    opacity: 0.8;
+
+    @include media_interval($media768, $media1024) {
+      @include font-size(13px, 17px);
+    }
+
+    @include media_interval(0, $media768) {
+      display: none;
+    }
+  }
+}

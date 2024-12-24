@@ -1,0 +1,35 @@
+<section class="service-block" data-stick="Our services">
+  <div class="grid-block service-block__wrapper">
+
+    {% if block.header %}
+      <h2 class="service-block__header">{{ block.header }}</h2>
+    {% endif %}
+
+    <div class="service-block__image-wrapper">
+      <img class="service-block__image" src="{{ static('img/Chiropractic.png') }}" alt="{{ block.header }}">
+    </div>
+
+    <div class="service-block__list">
+      {% for service in services %}
+
+        <div class="service-block__item" data-id="{{ service.pk }}">
+
+          <a href="{{ service.get_absolute_url() }}"
+             class="service-block__item-title service-block__item-title-js">{{ service.title }}</a>
+
+          <div class="service-block__sub-service">
+            <a href="{{ service.get_absolute_url() }}"
+               class="service-block__sub-service-title service-block__sub-service-title-ov">{{ _('Overview') }}</a>
+            {% for sub_service in service.children.all() %}
+              {% if sub_service.visible %}
+                <a href="{{ sub_service.get_absolute_url() }}"
+                   class="{% if sub_service.important_in_preview %}service-important{% endif %} service-block__sub-service-title">{{ sub_service.title }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

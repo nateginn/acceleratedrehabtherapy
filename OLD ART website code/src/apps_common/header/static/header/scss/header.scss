@@ -1,0 +1,346 @@
+@import 'mixins';
+
+$logo_width: 160px;
+$logo_height: 52px;
+
+$logo_width_tablet: 134px;
+$logo_height_tablet: 43px;
+
+$logo_width_mobile: 190px;
+$logo_height_mobile: 72px;
+
+#header-cell > header {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+
+  @include media_interval($media768, $media1024) {
+    top: -2px;
+  }
+
+  @include media_interval(0, $media768) {
+    padding: 40px 7px 0;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .logo-box {
+    flex: 0 0 auto;
+    top: 2px;
+    position: relative;
+
+    @include media_interval($media768, $media1024) {
+      order: 1;
+      margin-right: 10px;
+    }
+
+    @include media_interval(0, $media768) {
+      order: 1;
+      margin-right: 10px;
+    }
+
+    .logo {
+      display: inline-block;
+      width: $logo_width;
+      vertical-align: middle;
+      transition: opacity 0.3s;
+
+      @include media_interval($media768, $media1024) {
+        width: $logo_width_tablet;
+        height: $logo_height_tablet;
+      }
+
+      @include media_interval(0, $media768) {
+        width: $logo_width_mobile;
+        height: $logo_height_mobile;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        padding-bottom: #{100 * $logo_height/$logo_width + "%"};
+        background: $sprite_url no-repeat 0 -55px;
+        background-size: rel-background-size($logo_width, $logo_height);
+
+        @include media_interval($media768, $media1024) {
+          background: url(/static/img/sprite.svg) no-repeat 0 -46px;
+          background-size: rel-background-size($logo_width, $logo_height);
+        }
+
+        @include media_interval(0, $media768) {
+          background: url(/static/img/sprite.svg) no-repeat 0 -63px;
+          background-size: 331%;
+          padding-bottom: 32.7%;
+        }
+      }
+    }
+
+    a.logo:hover {
+      opacity: 0.75;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .service_left_menu {
+    @include media_interval($media768, $media1024) {
+      display: none;
+    }
+  }
+
+  .menu {
+    .root_service {
+      display: none;
+    }
+  }
+
+  .main-menu {
+    @include media_interval($media768, $media1024) {
+      ul {
+        display: flex;
+
+        li:not(.root_service):nth-child(4) {
+          order: -1;
+        }
+      }
+    }
+  }
+
+  .menu-box {
+    padding: 0 20px 0 71px;
+    width: 100%;
+
+    @include media_interval($media768, $media1024) {
+      padding: 0 14px 0 0;
+      margin-top: -5px;
+    }
+
+    @include media_interval(0, $media_mobile) {
+      padding: 0;
+    }
+  }
+
+  .menu-services {
+    position: relative;
+    margin-right: 24px;
+
+    &:before {
+      position: absolute;
+      content: '';
+      width: 9px;
+      height: 3px;
+      background: $gray_blue;
+      right: -8px;
+      top: 14px;
+      border-radius: 5px;
+      transform: rotate(45deg);
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer;
+
+      @include media_interval($media768, $media1024) {
+        top: 11px;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 9px;
+      height: 3px;
+      background: $gray_blue;
+      right: -13px;
+      top: 14px;
+      border-radius: 5px;
+      transform: rotate(-45deg);
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer;
+
+      @include media_interval($media768, $media1024) {
+        top: 11px;
+      }
+    }
+
+    &:hover {
+      &:before, &:after {
+        background: $yellow;
+        transition: background-color 0.3s;
+      }
+
+      &:before {
+        transform: rotate(-45deg);
+        transition: transform 0.3s;
+      }
+
+      &:after {
+        transform: rotate(45deg);
+        transition: transform 0.3s;
+      }
+
+      .menu-services__dropdown {
+        display: flex;
+        z-index: 10;
+      }
+    }
+
+    &__dropdown {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background: $white;
+      padding: 10px 29px 10px 15px;
+      box-shadow: 0 0 10px rgba(24, 77, 108, 0.2);
+      width: max-content;
+
+      .root_service {
+        display: block !important;
+        margin-right: 0;
+
+        &.active {
+          a {
+            color: $light_blue;
+          }
+        }
+
+        a {
+          @include font_default;
+          @include font-size(14px, 22px);
+          color: $gray_blue;
+          transition: color 0.3s;
+
+          &:hover {
+            color: $yellow;
+            transition: color 0.3s;
+          }
+        }
+      }
+    }
+  }
+
+  .phone-box {
+    position: relative;
+    background: linear-gradient(180deg, #FFD028 0%, #FF6A2B 100%);
+    padding: 25px 24px 20px;
+    border-radius: 0 0 5px 5px;
+    min-width: 180px;
+    top: 9px;
+
+    @include media_interval($media768, $media1024) {
+      order: 2;
+      padding: 15px 18px;
+      top: 2px;
+    }
+
+    @include media_interval(0, $media768) {
+      display: none;
+    }
+
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__phone {
+      @include font_default;
+      @include font-size(24px, 24px);
+      color: #3f3f3f;
+      font-weight: bold;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.7;
+        transition: opacity 0.3s;
+      }
+
+      @include media_interval($media768, $media1024) {
+        @include font-size(20px, 30px);
+        margin-bottom: 7px;
+      }
+    }
+
+    &__btn {
+      margin-bottom: 9px;
+      width: 180px;
+
+      @include media_interval($media768, $media1024) {
+        margin-bottom: 5px;
+      }
+    }
+
+    &__address {
+      @include font_default;
+      @include font-size(13px, 17px);
+      color: $white;
+      letter-spacing: -0.3px;
+      text-align: center;
+
+      @include media_interval($media768, $media1024) {
+        @include font-size(12px, 17px);
+      }
+    }
+  }
+
+}
+
+
+//мобильный блок с кнопками
+
+#contact-slide.contact-slide {
+  display: none;
+
+  @include media_interval(0, $media768) {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 50px;
+  }
+
+  .contact-slide__tel, .contact-slide__cont, .contact-slide__direct {
+    @include font_default;
+    @include font-size(16px, 16px);
+    width: 33.33%;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-radius: 0;
+    }
+
+    &:before {
+      border-radius: 0;
+    }
+  }
+
+  .contact-slide__cont {
+    &:hover {
+      border-radius: 6px 0 0 0 !important;
+    }
+
+    &:before {
+      border-radius: 6px 0 0 0 !important;
+    }
+  }
+
+  .contact-slide__direct {
+    &:hover {
+      border-radius: 0 6px 0 0 !important;
+    }
+
+    &:before {
+      border-radius: 0 6px 0 0 !important;
+    }
+  }
+}
+
+

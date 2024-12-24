@@ -1,0 +1,15 @@
+<div class="focus-on">
+  <div class="grid-block focus-on__wrapper">
+    {% if block.header %}
+      <div class="focus-on__title">{{ block.header }}</div>
+    {% endif %}
+    <div class="focus-on__list">
+      {% for block in block.focuses.all() %}
+        <div class="focus-on__item">
+          <div class="focus-on__item-icon {{ block.icon }}"></div>
+          <div class="focus-on__item-description">{{ block.title }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

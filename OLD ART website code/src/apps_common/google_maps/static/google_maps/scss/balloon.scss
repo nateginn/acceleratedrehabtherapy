@@ -1,0 +1,107 @@
+@import "mixins";
+
+$balloon_background: #FFB129;
+$balloon_border: #FFB129;
+$balloon_shadow: rgba(#CCC, 0.5);
+$balloon_close_color: #CCC;
+$arrow_height: 18px;
+$arrow_space: 6px;      // расстояние между маркером и стрелкой окна
+
+
+.gmap-balloon {
+  position: absolute;
+  padding-bottom: $arrow_height + $arrow_space;
+  min-width: 40px;
+  min-height: 40px;
+  z-index: 100;
+  cursor: initial;
+  box-sizing: border-box;
+
+  .gmap-balloon-content {
+    position: relative;
+    max-width: 100%;
+    z-index: 1;
+    background: $balloon_background;
+    box-sizing: border-box;
+  }
+
+  .gmap-balloon-arrow {
+    display: none;
+    position: absolute;
+    bottom: -$arrow_height + $arrow_space;
+    left: 50%;
+    z-index: 10;
+    border: $arrow_height solid transparent;
+    border-top: $arrow_height solid rgba($balloon_border, 0.6);
+    transform: translateX(-50%);
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: -$arrow_height;
+      top: -$arrow_height - 1px;
+      z-index: 1;
+      border: $arrow_height solid transparent;
+      border-top: $arrow_height solid $balloon_background;
+    }
+  }
+
+  .gmap-balloon-close {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    cursor: pointer;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      background: $balloon_close_color;
+    }
+  }
+}
+
+
+// ====================
+//  THEME
+// ====================
+
+.gmap-balloon {
+  max-width: 183px;
+
+  .gmap-balloon-content {
+    width: 183px;
+    padding: 12px 23px 17px;
+    border-radius: 5px;
+    @include font-size(18px, 25px);
+        transform: translateY(-50px);
+  }
+
+  .gmap-balloon-close {
+    display: none;
+    top: 8px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    transform: scale(0.75);
+    transition: transform 0.2s ease-in;
+
+    &:before, &:after {
+      height: 2px;
+    }
+    &:before {
+      transform: translate3d(0, -50%, 0) rotate(45deg);
+    }
+    &:after {
+      transform: translate3d(0, -50%, 0) rotate(-45deg);
+    }
+
+    &:hover {
+      transform: scale(1);
+    }
+  }
+}

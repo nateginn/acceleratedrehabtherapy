@@ -1,0 +1,92 @@
+@import 'mixins/all';
+@import 'conf';
+
+//=========================================
+//  Размеры шрифта
+//=========================================
+@mixin fontsize_default() {
+  @include font-size(16px, 26px);
+
+  @include media_interval(0, $media1024) {
+    @include font-size(15px, 19px);
+  }
+}
+
+@mixin fontsize_h1() {
+  @include font-size(62px, 62px);
+
+  @include media_interval(0, $media1024) {
+    @include font-size(34px, 34px);
+  }
+}
+
+@mixin fontsize_h2() {
+  @include font-size(50px, 50px);
+
+  @include media_interval($media768, $media1024) {
+    @include font-size(30px, 30px);
+  }
+
+  @include media_interval(0, $media768) {
+    @include font-size(28px, 31px);
+  }
+}
+
+@mixin fontsize_h3() {
+  @include font-size(32px, 38px);
+
+  @include media_interval($media768, $media1024) {
+    @include font-size(28px, 28px);
+  }
+
+  @include media_interval(0, $media768) {
+    @include font-size(22px, 22px);
+  }
+}
+
+@mixin fontsize_h4() {
+  @include font-size(25px, 30px);
+
+  @include media_interval($media768, $media1024) {
+    @include font-size(24px, 24px);
+  }
+
+  @include media_interval(0, $media768) {
+    @include font-size(20px, 20px);
+  }
+}
+
+@mixin fontsize_h5() {
+  @include font-size(22px, 26px);
+
+  @include media_interval($media768, $media1024) {
+    @include font-size(22px, 22px);
+  }
+
+  @include media_interval(0, $media768) {
+    @include font-size(18px, 18px);
+  }
+}
+
+@mixin fontsize_h6() {
+  @include font-size(20px, 24px);
+
+  @include media_interval($media768, $media1024) {
+    @include font-size(20px, 20px);
+  }
+
+  @include media_interval(0, $media768) {
+    @include font-size(16px, 16px);
+  }
+}
+
+//=========================================
+//  Шрифты
+//=========================================
+@mixin font_default() {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+@mixin font_title() {
+  font-family: 'Phosphate Pro Solid', Arial, Helvetica, sans-serif;
+}

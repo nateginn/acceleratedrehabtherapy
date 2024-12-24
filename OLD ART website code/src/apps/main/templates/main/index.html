@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block static_head %}
+  {{ super() }}
+  {% stylesheet 'main' %}
+{% endblock static_head %}
+
+{% block static_js %}
+  {{ super() }}
+  {% javascript 'main' %}
+  {% javascript 'base_page' %}
+{% endblock static_js %}
+
+{% block content %}
+
+  {% block page_header %}
+    <section class="base-app section">
+      <div class="base-page__wrapper">
+        <div class="main-slider">
+          <div class="main-slider__text-wrap">
+
+              <h2 class="main-slider__title"></h2>
+
+            {% if config.description %}
+              <p class="main-slider__description">{{ config.description|linebreaksbr }}</p>
+            {% endif %}
+
+            <div class="main-slider__btn-wrap">
+              <a href="{{ url('contacts:index') }}"
+                 class="main-slider__button btn yellow-btn"><span>{{ _('I want to feel better' ) }}</span></a>
+            </div>
+          </div>
+          <div class="main-slider__background-wrap">
+            <div class="main-slider__image isShow">
+              <div></div>
+            </div>
+            <div class="main-slider__image">
+              <div></div>
+            </div>
+            <div class="main-slider__image">
+              <div></div>
+            </div>
+            <div class="main-slider__image">
+              <div></div>
+            </div>
+          </div>
+          <div class="main-slider__progress-bar"><span></span></div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <template id="tickerText">
+      <span class="main-slider__ticker">keep your life moving</span>
+    </template>
+  {% endblock page_header %}
+
+  {% block page_content %}
+    {% if config.text %}
+      <div class="base-page__text-wrap main">
+        <div class="grid-block main__text-wrapper">
+          <div class="text-styles main__text"
+               property="articleBody">{{ config.text|typograf }}</div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% render_attached_blocks config %}
+  {% endblock page_content %}
+
+{% endblock content %}

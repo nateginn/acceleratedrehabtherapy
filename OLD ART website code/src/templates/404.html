@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block static_head %}
+  {{ super() }}
+  {% stylesheet 'error' %}
+{% endblock static_head %}
+
+
+{% block content %}
+
+<div id="error" class="error-404">
+  <div class="grid-block">
+    <div class="error-404__wrapper">
+      <div class="error-404__title">
+        {{ _('page not found' ) }}
+      </div>
+
+      <div class="error-404__description">
+        <p class="error-404__paragraph">Error 404. The link is broken or the page has been moved.</p>
+        <p class="error-404__paragraph"> Go to the main page or select a section from the menu.</p>
+      </div>
+      <div class="error-404__btn-wrap">
+        <a href="/contact"
+           class="error-404__button btn yellow-btn"><span>I want to feel better</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+
+

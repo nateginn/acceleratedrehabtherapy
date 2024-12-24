@@ -1,0 +1,45 @@
+name: accelerated-rehab-therapy
+region: nyc
+services:
+  - name: web
+    image:
+      registry_type: DOCKER_HUB
+      registry: growyourbiz4ever
+      repository: artcom
+      tag: latest
+    instance_size_slug: basic-xs
+    instance_count: 1
+    http_port: 8000
+    envs:
+      - key: DJANGO_SETTINGS_MODULE
+        value: settings.dev_common
+      - key: DB_HOST
+        value: ${db.HOSTNAME}
+      - key: DB_NAME
+        value: ${db.DATABASE}
+      - key: DB_USER
+        value: ${db.USERNAME}
+      - key: DB_PASS
+        value: ${db.PASSWORD}
+    health_check:
+      http_path: /
+      period_seconds: 10
+      timeout_seconds: 5
+      success_threshold: 1
+      failure_threshold: 3
+
+databases:
+  - engine: PG
+    name: db
+    version: "11"
+    production: false
+
+workers:
+  - name: redis
+    image:
+      registry_type: DOCKER_HUB
+      registry: library
+      repository: redis
+      tag: "5.0"
+    instance_size_slug: basic-xs
+    instance_count: 1

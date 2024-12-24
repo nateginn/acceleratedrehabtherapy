@@ -1,0 +1,91 @@
+//=======================
+// Точки для media-queries
+//=======================
+$media1200: 1200px;
+$media1024: 1024px;
+$media900: 900px;
+$media768: 768px;
+$media640: 640px;
+$media600: 600px;
+$media480: 480px;
+$media400: 400px;
+
+
+//=======================
+// Сетка
+//=======================
+$cols_wide: 12;
+$cols_desktop: 12;
+$cols_tablet: 6;
+$cols_mobile: 4;
+
+// Максимальная ширина сетки
+$grid_max_width: 1400px;
+
+// Боковые границы каждого столбца
+$grid_column_gap: 10px;
+
+// Боковые границы сетки
+$grid_paddings: (
+                $media1200 0: 100px,
+                ($media1024, $media1200): 44px,
+                ($media768, $media1024): 30px,
+                ($media640, $media768): 20px,
+                (0, $media640): 5px,
+);
+
+// Боковые границы сетки с прибавлением границы столбца
+$grid_full_paddings: ();
+@each $key, $value in $grid_paddings {
+  $grid_full_paddings: map-merge($grid_full_paddings, (
+          $key: $value + $grid_column_gap
+  ))
+}
+
+
+//=======================
+// Sprite
+//=======================
+$sprite_url: url(/static/img/sprite.svg);
+$sprite_width: 535px;
+$sprite_height: 188px;
+
+
+//=======================
+// Цвета
+//=======================
+$white: #FFFFFF;
+$text_color: #000F1B;
+$gray_blue: #0E3650;
+$yellow: #FFC328;
+$light_blue: #01C9FC;
+$light_blue_2: #EDF4FF;
+$gray_blue_2: #083B57;
+$blue: #004A74;
+$dark_blue: #012E47;
+
+$yellow_gradient_1: linear-gradient(180deg, #FFD028 0%, #FF6A2B 100%);
+$yellow_gradient_2: linear-gradient(180deg, #FF6A2B 0%, #FFD028 100%);
+$yellow_gradient_3: linear-gradient(180deg, #FF752A 0%, #FF752A 100%);
+$blue_gradient_1: linear-gradient(180deg, #0F9AFF 0%, #043DAC 100%);
+$blue_gradient_2: linear-gradient(180deg, #043DAC 0%, #0F9AFF 100%);
+$blue_gradient_3: linear-gradient(180deg, #043DAC 0%, #043EAC 100%);
+//=======================
+// Меню
+//=======================
+$menu_burger_color: $gray_blue;
+$menu_burger_color_index: $white;
+$menu_burger_width: 28px;
+$menu_burger_line_height: 4px;
+$menu_burger_line_space: 6px;
+
+// интервал показа мобильного меню
+$media_mobile: $media768;
+
+
+//=======================
+// Формы
+//=======================
+
+// вертикальное расстояние между полями
+$field_space: 20px;

@@ -1,0 +1,137 @@
+@import "mixins";
+
+.our-mission {
+  margin: 70px 0;
+  color: $gray_blue;
+
+  @include media_interval($media768, $media1024) {
+    margin: 50px 0;
+  }
+
+  @include media_interval(0, $media768) {
+    margin: 35px 0;
+  }
+
+  &__content {
+    margin-bottom: 45px;
+
+    @include media_interval(0, $media768) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__title {
+    @include font-title;
+    @include fontsize_h2;
+    margin-bottom: 30px;
+
+    @include media_interval(0, $media768) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__text {
+    @include font-default;
+    @include fontsize_default;
+    max-width: 880px;
+
+    @include media_interval(0, $media1024) {
+      max-width: 100%;
+    }
+  }
+
+  &__slider-box {
+    display: flex;
+
+    @include media_interval(0, $media1024) {
+      flex-direction: column;
+    }
+  }
+
+  &__slider {
+    max-width: 770px;
+    overflow: hidden;
+    padding-bottom: 30px;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination-bullets.our-mission__pagination {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    bottom: -22px;
+  }
+
+  &__social-box {
+    display: flex;
+    position: relative;
+    bottom: 38px;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 30px;
+
+    @include media_interval($media1024, $media1200) {
+      margin-left: 20px;
+    }
+
+    @include media_interval(0, $media1024) {
+      margin-left: initial;
+      margin-top: 15px;
+      bottom: 0;
+    }
+  }
+
+  &__social-box-wrap {
+    position: relative;
+    width: 300px;
+    padding-left: 80px;
+
+    @include media_interval($media1024, $media1200) {
+      padding-left: 70px;
+      width: 240px;
+    }
+
+    @include media_interval(0, $media1024) {
+      width: initial;
+      padding-left: initial;
+    }
+
+    &:before {
+      position: absolute;
+      top: 7px;
+      left: 0;
+      content: '';
+      width: 74px;
+      height: 1px;
+      background-color: $gray_blue;
+
+      @include media_interval($media1024, $media1200) {
+        width: 64px;
+      }
+
+      @include media_interval(0, $media1024) {
+        display: none;
+      }
+    }
+  }
+
+  &__social-box-text {
+    @include font_default;
+    @include font-size(16px, 21px);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  &__social-links {
+    li {
+      margin-right: 10px;
+    }
+
+    a {
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

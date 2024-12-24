@@ -1,0 +1,32 @@
+{% extends 'base_page/index.html' %}
+
+{% block static_head %}
+  {{ super() }}
+  {% stylesheet 'blog' %}
+{% endblock static_head %}
+
+{% block static_js %}
+  {{ super() }}
+  {% javascript 'blog' %}
+{% endblock static_js %}
+
+{% block content_uniq %}
+
+  <div id="blog" class="blog">
+    <div class="grid-block blog__wrapper">
+      <div class="blog__items-container">
+        {% include 'blog/articles.html' %}
+      </div>
+
+      {% if paginator.num_pages > 1 %}
+        <div id="paginator">
+          <div class="grid-block">
+            {% paginator paginator %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock content_uniq %}
+

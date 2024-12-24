@@ -1,0 +1,30 @@
+@import "mixins";
+
+.pop-up {
+  display: none;
+  
+  &--active {
+    display: block;
+  }
+
+  &__title {
+    @include fontsize_h2;
+    @include font_title;
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    @include font_default;
+    @include fontsize_default;
+    margin-bottom: 35px;
+  }
+
+  &__btn {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include media_interval(0, 400px){
+      max-height: 85px!important;
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@import "mixins";
+
+$icon_size: 30px;
+$icon_size_tablet: 25px;
+
+
+.social-links {
+  position: relative;
+  z-index: 5;
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+
+    @include media_interval($media768, $media1024){
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    display: inline-block;
+    width: $icon_size;
+    opacity: 1;
+    vertical-align: middle;
+    background: #000000;
+    border-radius: 100px;
+    transition: opacity 0.3s;
+
+    @include media_interval($media768, $media1024) {
+      width: $icon_size_tablet;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+      background: $sprite_url no-repeat;
+      background-size: rel-background-size($icon_size, $icon_size);
+    }
+
+    &.facebook:before {
+      background-position: rel-background-position($icon_size, $icon_size, -64px, -108px);
+    }
+
+    &.twitter:before {
+      background-position: rel-background-position($icon_size, $icon_size, -154px, -108px);
+    }
+
+    &.linkedin:before {
+      background-position: rel-background-position($icon_size, $icon_size, -124px, -109px);
+    }
+
+    &.pinterest:before {
+      background-position: rel-background-position($icon_size, $icon_size, -64px, -108px);
+    }
+
+    &.instagram:before {
+      background-position: rel-background-position($icon_size, $icon_size, -94px, -108px);
+    }
+
+    &.yelp:before {
+      background-position: rel-background-position($icon_size, $icon_size, -64px, -108px);
+    }
+
+    &.youtube:before {
+      background-position: rel-background-position($icon_size, $icon_size, -184px, -108px);
+    }
+
+    &.vimeo:before {
+      background-position: rel-background-position($icon_size, $icon_size, -64px, -108px);
+
+    }
+
+    &:hover {
+      transition: opacity 0.3s;
+      opacity: 0.5;
+    }
+  }
+}

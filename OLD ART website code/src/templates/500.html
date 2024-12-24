@@ -1,0 +1,12 @@
+{% extends '404.html' %}
+
+{% block title %}{{ _('Server error') }}{% endblock %}
+
+{% block code %}500{% endblock code %}
+{% block text %}
+  {% trans %}
+    The server encountered an internal error or misconfiguration and was unable to complete your request.<br>
+    You can return back to the site’s <a href="/">homepage</a> and see if you can find what you are
+    looking for.
+  {% endtrans %}
+{% endblock text %}

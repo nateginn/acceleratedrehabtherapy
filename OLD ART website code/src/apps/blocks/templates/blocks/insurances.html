@@ -1,0 +1,24 @@
+<div class="insurances">
+  <div class="grid-block insurances__wrapper">
+
+    {% if block.header %}
+      <div class="insurances__title">{{ block.header }}</div>
+    {% endif %}
+
+    {% if block.description %}
+      <div class="insurances__description">{{ block.description|linebreaksbr }}</div>
+    {% endif %}
+
+    {% if block.img %}
+      <div class="insurances__img-wrap">
+        <img class="insurances__img" src="{{ block.img.normal.url }}"
+             alt="{{ block.header }}">
+      </div>
+    {% endif %}
+
+    {% if block.button_text %}
+      <a href="{{ url('contacts:index') }}" class="insurances__btn btn yellow-btn">{{ block.button_text }}</a>
+    {% endif %}
+
+  </div>
+</div>

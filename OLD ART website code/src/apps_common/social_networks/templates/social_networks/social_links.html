@@ -1,0 +1,10 @@
+<ul class="social-links {{ classes }}">
+  {% for link in links %}
+    <li>
+      <a href="{{ link.url }}" class="{{ link.provider }}"
+         title="Follow us on {{ link.get_provider_display() }}"
+         aria-label="Follow us on {{ link.get_provider_display() }}"
+         rel="nofollow" target="_blank"></a>
+    </li>
+  {% endfor %}
+</ul>

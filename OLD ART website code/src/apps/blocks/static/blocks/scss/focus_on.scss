@@ -1,0 +1,93 @@
+@import "mixins";
+
+.focus-on {
+  padding: 70px 0 43px;
+  background: $dark_blue;
+  color: $white;
+
+  @include media_interval(0, $media1024) {
+    display: none;
+  }
+
+  &__title {
+    @include font-title;
+    @include font-size(32px, 32px);
+    margin-bottom: 105px;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+
+    &:before {
+      position: absolute;
+      top: -71px;
+      left: 15px;
+      content: '';
+      background: url("/static/img/focus_on.png") no-repeat;
+      width: 1180px;
+      height: 189px;
+
+      @include media_interval($media1024, 1280px) {
+        background-size: 100%;
+        width: 920px;
+      }
+    }
+  }
+
+  &__item {
+    width: 180px;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .auto-accident {
+      background-position: -223px -1px;
+      width: 57px;
+      height: 55px;
+      margin-bottom: 9px;
+    }
+
+    .work-comp {
+      background-position: -161px -1px;
+      width: 62px;
+      height: 47px;
+      margin-bottom: 16px;
+    }
+
+    .sports {
+      background-position: -280px -1px;
+      width: 47px;
+      height: 55px;
+      margin-bottom: 9px;
+    }
+
+    .slip-and-falls {
+      position: relative;
+      top: -10px;
+      background-position: -327px -1px;
+      width: 41px;
+      height: 55px;
+      margin-bottom: 9px;
+    }
+
+    .personal {
+      background-position: -368px -1px;
+      width: 44px;
+      height: 55px;
+      margin-bottom: 9px;
+    }
+  }
+
+  &__item-icon {
+    background: url("/static/img/sprite.svg") no-repeat;
+  }
+
+  &__item-description {
+    @include font-size(20px, 23px);
+    @include font_title;
+    letter-spacing: 2px;
+  }
+}

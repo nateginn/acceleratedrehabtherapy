@@ -1,0 +1,11 @@
+<p class="title title-h1">{{ _('Create an account') }}</p>
+
+{{ form.media }}
+<form method="post" action="{{ ajax_url('users.signup') }}" id="ajax-popup-signup-form"
+      class="users-signup-form users-popup-form users-form" autocomplete="off">
+  <input type="hidden" name="next" value="{{ request.GET.next }}">
+
+  {% render_form form %}
+
+  <button type="submit" class="btn">{{ _('Sign Up') }}</button>
+</form>

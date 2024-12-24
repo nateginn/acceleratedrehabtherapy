@@ -1,0 +1,24 @@
+<div class="partners">
+  <div class="grid-block partners__wrapper">
+    {% if block.header %}
+      <div class="partners__title">{{ block.header }}</div>
+    {% endif %}
+    <div class="partners__list">
+      {% for block in block.partners.all() %}
+
+        {% if block.link %}
+          <div class="partners__item">
+            <a href="{{ block.link }}" target="_blank">
+              <img src="{{ block.img.url }}" class="partner__image" alt="{{ block.header }}">
+            </a>
+          </div>
+        {% else %}
+          <div class="partners__item">
+            <img src="{{ block.img.url }}" class="partner__image" alt="{{ block.header }}">
+          </div>
+        {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+</div>

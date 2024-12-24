@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block static_head %}
+  {{ super() }}
+  {% stylesheet 'contacts' %}
+{% endblock static_head %}
+
+{% block static_js %}
+  {{ super() }}
+  {% javascript 'contacts' %}
+{% endblock static_js %}
+
+{% block content %}
+
+  <div id="contacts" class="contacts">
+    <div class="contacts__wrapper grid-block">
+      {% breadcrumbs %}
+
+      {% if config.header %}
+        <div class="contacts__title">{{ config.header }}</div>
+      {% endif %}
+
+      <p class="contacts__text">
+        {% trans phone=phone|phone %}
+          Our support team is on-hand to assist with any issues you are experiencing. Please use the form to contact us
+          with
+          your needs. Send us a message and we'll respond as soon as possible. Also, you can call us:
+          <a href="tel:{{ phone }}" class="contacts__tel">{{ phone }}</a>. An expert waiting to help you now.
+        {% endtrans %}
+      </p>
+
+      <form method="post" id="contact-form" novalidate>
+        {% csrf_token %}
+        {% render_form form %}
+        <div class="contacts__buttons">
+          <button type="submit" class="btn contacts__btn yellow-btn">{{ _('submit') }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% render_attached_blocks config %}
+
+{% endblock content %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', function(event) {
+        alert('Submit button clicked');
+      });
+    } else {
+      console.error('Form not found');
+    }
+  });
+</script>

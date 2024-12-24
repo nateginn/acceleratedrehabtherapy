@@ -1,0 +1,332 @@
+@import "mixins";
+
+#mobile-menu-button {
+  .burger {
+    &:before {
+      box-shadow: #FFFFFF 0 10px 0 0;
+    }
+
+    &:before, &:after {
+      background: $menu_burger_color_index;
+    }
+  }
+}
+
+#header-cell > header {
+
+  @include media_interval($media768, 0) {
+    top: 45px;
+  }
+
+  .logo-box {
+    .logo {
+      &:before {
+        background-position: 0 -1px;
+
+        @include media_interval(0, $media768) {
+          background-position: 0 0;
+        }
+      }
+    }
+  }
+
+  .phone-box {
+    display: none;
+  }
+}
+
+#header-cell > header .menu-services {
+  &:before, &:after {
+    background: $white;
+  }
+}
+
+.menu {
+  li {
+    color: $white;
+  }
+}
+
+.map-block {
+  padding-bottom: 0;
+
+  &__consultation-box {
+    display: none;
+  }
+
+  #google-map {
+    margin-bottom: 0;
+  }
+}
+
+.contacts {
+  color: $white;
+  padding: 170px 0 79px;
+  background: $dark_blue;
+
+  @include media_interval($media768, $media1024) {
+    padding: 165px 0 25px;
+  }
+
+  @include media_interval(0, $media768) {
+    padding: 140px 0 0;
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 1;
+
+    &:before {
+      position: absolute;
+      content: '';
+      width: 715px;
+      height: 175px;
+      background: url("/static/img/opacity-chiropractic.png") no-repeat;
+      top: -23px;
+      right: 111px;
+      z-index: -1;
+
+      @include media_interval(1401px, 0) {
+        right: -1vw;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      width: 626px;
+      height: 175px;
+      background: url("/static/img/opacity-chiropractic-2.png") no-repeat;
+      top: 168px;
+      right: -2px;
+      z-index: -1;
+
+      @include media_interval(1401px, 0) {
+        right: -14vw;
+      }
+    }
+  }
+
+  .breadcrumbs {
+    .breadcrumb-item {
+      color: #FFFFFF;
+
+      &.active {
+        color: $yellow;
+      }
+    }
+  }
+
+  &__title {
+    @include font-title;
+    @include fontsize_h1;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+  }
+
+  &__text {
+    @include font-default;
+    @include font-size(18px, 27px);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 44px;
+    max-width: 780px;
+  }
+
+  &__tel {
+    font-weight: bold;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $yellow;
+      transition: color 0.3s;
+    }
+  }
+
+  #contact-form {
+    position: relative;
+    max-width: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 100px;
+    z-index: 1;
+
+    @include media_interval(0, $media768) {
+      margin: 0 auto;
+    }
+
+    .field {
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 5;
+
+      &.invalid > .control {
+        input, select, textarea {
+          color: rgba(255, 195, 40, 0.7);
+        }
+      }
+
+      &-captcha {
+        display: none;
+      }
+
+      .control {
+        position: relative;
+
+        &:before {
+          position: absolute;
+          content: '';
+          top: -1px;
+          left: -1px;
+          width: calc(100% + 2px);
+          height: calc(100% + 2px);
+          border-radius: 4px;
+          background: linear-gradient(180deg, #00A3FF -1.27%, #084ACB 94.63%);
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 36px;
+          overflow: hidden;
+        }
+      }
+
+      .control > input, textarea {
+        position: relative;
+        background-color: #022743;
+        border: 0;
+        color: $white;
+
+        &::placeholder {
+          transition: opacity 0.3s;
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        &:focus::placeholder {
+          transition: opacity 0.3s;
+          opacity: 0.3;
+        }
+      }
+
+      &-name {
+        width: 100%;
+      }
+
+      &-phone {
+        max-width: calc(50% - 10px);
+        margin-right: 10px;
+      }
+
+      &-email {
+        max-width: calc(50% - 10px);
+        margin-left: 10px;
+      }
+
+      &-message {
+        width: 100%;
+      }
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+
+    &:before {
+      position: absolute;
+      top: -134px;
+      left: -168px;
+      content: '';
+      background: url("/static/img/arrow_part3.png") no-repeat;
+      width: 353px;
+      height: 211px;
+      z-index: 0;
+      transform: rotate(-6deg);
+      background-size: 98%;
+
+      @include media_interval($media768, $media1200) {
+        left: -139px;
+      }
+
+      @include media_interval(0, $media768) {
+        display: none;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      top: 30px;
+      left: -144px;
+      content: '';
+      background: url("/static/img/arrow_part2.png");
+      background-position: -13px -20px;
+      width: 122px;
+      height: 65px;
+      transform: rotate(-25deg);
+      background-size: 102%;
+      z-index: 1;
+
+      @include media_interval($media1024, $media1200) {
+        left: -115px;
+      }
+
+      @include media_interval($media768, $media1024) {
+        top: 24px;
+        left: -120px;
+      }
+
+      @include media_interval(0, $media768) {
+        display: none;
+      }
+    }
+  }
+
+  &__btn {
+    padding: 11px 0;
+    width: 100%;
+  }
+}
+
+.thank-page {
+  color: $white;
+  padding: 230px 0 451px;
+  background: $dark_blue;
+
+  @include media_interval($media768, $media1024) {
+    padding: 230px 0 350px;
+  }
+
+  @include media_interval(0, $media768) {
+    padding: 230px 0 250px;
+  }
+
+  &__title {
+    @include font-title;
+    @include fontsize_h1;
+    margin-bottom: 18px;
+  }
+
+  &__description {
+    @include font-default;
+    @include font-size(18px, 27px);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 780px;
+  }
+
+  &__paragraph {
+    margin-bottom: 8px;
+  }
+
+  &__phone {
+    @include font-title;
+    @include fontsize_h5;
+    color: #FFDD3B;
+    opacity: 1;
+    transition: color 0.3s;
+
+    &:hover {
+      transition: color 0.3s;
+      color: $white;
+    }
+  }
+}

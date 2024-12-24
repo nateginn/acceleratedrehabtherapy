@@ -1,0 +1,73 @@
+@import "mixins";
+
+.partners {
+  padding: 96px 0 100px;
+  background-color: $blue;
+  color: $white;
+
+  @include media_interval($media768, $media1024) {
+    padding: 42px 0 50px;
+  }
+
+  @include media_interval(0, $media768) {
+    padding: 42px 0 31px;
+  }
+
+  &__title {
+    @include fontsize_h2;
+    @include font-title;
+    margin-bottom: 60px;
+    letter-spacing: 0.3px;
+
+    @include media_interval($media768, $media1024) {
+      margin-bottom: 22px;
+      @include font-size(40px, 40px);
+    }
+
+    @include media_interval(0, $media768) {
+      margin-bottom: 38px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0 -10px;
+
+    @include media_interval($media768, $media1024) {
+      margin: 0 -2px;
+    }
+
+    @include media_interval(0, $media768) {
+      margin: initial;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    width: calc(25% - 40px);
+    margin: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.6;
+        transition: opacity 0.3s;
+      }
+    }
+
+    @include media_interval($media768, $media1024) {
+      width: calc(25% - 25px);
+      margin: 0 25px;
+    }
+
+    @include media_interval(0, $media768) {
+      width: calc(50% - 50px);
+      margin: 13px 22px;
+    }
+  }
+}

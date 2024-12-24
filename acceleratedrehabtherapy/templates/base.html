@@ -1,0 +1,50 @@
+<!-- acceleratedrehabtherapy/templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>{% block title %}{{ meta_title|default:"Accelerated Rehab Therapy" }}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ meta_description|default:'Professional chiropractic and rehabilitation services.' }}{% endblock %}">
+    
+    {% load static %}
+    {% load compress %}
+    
+    <!-- Tailwind CSS -->
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'dist/styles.css' %}">
+    {% endcompress %}
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="wrapper" class="flex flex-col min-h-screen">
+        <!-- Fixed Header -->
+        <header class="absolute top-0 left-0 right-0 z-50">
+            {% include 'includes/header.html' %}
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow relative">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="relative bg-[#001524] text-white">
+            {% include 'includes/footer.html' %}
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
